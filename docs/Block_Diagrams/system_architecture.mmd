@@ -1,0 +1,57 @@
+graph TD
+    %% CPU Subsystem
+    subgraph CPU["CPU Core (8-Bit Host)"]
+        cpu_addr["cpu_addr [15:0]"]
+        cpu_wdata["cpu_wdata [7:0]"]
+        cpu_rw["cpu_rw (0:R, 1:W)"]
+        cpu_req["cpu_req (Strobe)"]
+        cpu_rdata["cpu_rdata [7:0]"]
+        cpu_ready["cpu_ready (Acknowledge)"]
+        cpu_hit["cpu_hit (Status)"]
+    end
+
+    %% Cache Subsystem
+    subgraph CACHE["direct_mapped_cache"]
+        subgraph CTRL["cache_controller (FSM)"]
+            fsm["6-State Controller FSM<br/>IDLE | LOOKUP | MISS<br/>ALLOC | WR_THRU | DONE"]
+            tag_cmp["Tag Comparator (12-bit)"]
+            addr_dec["Address Decoder<br/>Tag[15:4], Idx[3:2], Off[1:0]"]
+        end
+
+        subgraph MEM["cache_memory (16 Bytes SRAM)"]
+            valid_arr["Valid Flags (4 x 1-bit)"]
+            tag_arr["Tag Array (4 x 12-bit)"]
+            data_arr["Data Array (4 x 4 Bytes)"]
+        end
+    end
+
+    %% Main Memory Subsystem
+    subgraph MAIN_MEM["main_memory (Secondary Storage)"]
+        mem_storage["Byte Array (64 KB)"]
+        mem_ctrl["Latency Engine (2 Cycles)"]
+        mem_blk_read["Burst 4-Byte Read Port"]
+        mem_byte_write["Single-Byte Write Port"]
+    end
+
+    %% Interconnects: CPU <-> Cache
+    cpu_addr --> addr_dec
+    cpu_wdata --> CTRL
+    cpu_rw --> CTRL
+    cpu_req --> CTRL
+    CTRL --> cpu_rdata
+    CTRL --> cpu_ready
+    CTRL --> cpu_hit
+
+    %% Interconnects: Controller <-> Cache Memory
+    addr_dec --> tag_arr
+    addr_dec --> data_arr
+    tag_arr --> tag_cmp
+    valid_arr --> tag_cmp
+    tag_cmp --> fsm
+    fsm --> data_arr
+
+    %% Interconnects: Cache <-> Main Memory
+    CTRL -->|"mem_addr [15:0], mem_req"| MAIN_MEM
+    CTRL -->|"mem_wdata [7:0], mem_rw"| mem_byte_write
+    mem_blk_read -->|"mem_rdata_block [31:0]"| CTRL
+    mem_ctrl -->|"mem_ready"| CTRL

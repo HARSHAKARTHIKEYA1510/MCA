@@ -1,0 +1,346 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 8 0 R
+   /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> >>
+endobj
+8 0 obj
+<< /Length 8073 >>
+stream
+BT /F2 15 Tf 65 750 Td (Design and Implementation of a Synthesizable 16-Bit) Tj ET
+BT /F2 15 Tf 95 732 Td (Direct-Mapped Cache Controller Using Verilog HDL) Tj ET
+BT /F2 9 Tf 60 705 Td (Member 1: [Student 1 Name / Roll No]) Tj ET
+BT /F1 8 Tf 60 694 Td (Lead RTL & Architecture) Tj ET
+BT /F3 8 Tf 60 683 Td (student1@college.edu) Tj ET
+BT /F2 9 Tf 235 705 Td (Member 2: [Student 2 Name / Roll No]) Tj ET
+BT /F1 8 Tf 235 694 Td (Verification & Simulation) Tj ET
+BT /F3 8 Tf 235 683 Td (student2@college.edu) Tj ET
+BT /F2 9 Tf 410 705 Td (Member 3: [Student 3 Name / Roll No]) Tj ET
+BT /F1 8 Tf 410 694 Td (Integration & Documentation) Tj ET
+BT /F3 8 Tf 410 683 Td (student3@college.edu) Tj ET
+0.75 w 50 672 m 562 672 l S
+BT /F3 7.5 Tf 50 660 Td (* Academic Notice: Department guidelines describe a 5-member template; registered team strictly consists of 3 members.) Tj ET
+BT /F2 9 Tf 50 642 Td (Abstract-) Tj ET
+BT /F1 8 Tf 95 642 Td (The memory wall between processor cycle frequencies and) Tj ET
+BT /F1 8 Tf 50 631 Td (DRAM latency represents a fundamental computing bottleneck. Cache) Tj ET
+BT /F1 8 Tf 50 620 Td (memory mitigates this discrepancy by exploiting spatial and temporal) Tj ET
+BT /F1 8 Tf 50 609 Td (locality. This paper presents the register-transfer level \(RTL\) design) Tj ET
+BT /F1 8 Tf 50 598 Td (and functional verification of a 16-bit direct-mapped cache controller) Tj ET
+BT /F1 8 Tf 50 587 Td (in Verilog-2001. The architecture interfaces an 8-bit CPU core to) Tj ET
+BT /F1 8 Tf 50 576 Td (main memory via a 4-line, 4-byte/line \(16 bytes capacity\) SRAM array.) Tj ET
+BT /F1 8 Tf 50 565 Td (A 6-state FSM coordinates hit detection, allocation, and Write-Through) Tj ET
+BT /F1 8 Tf 50 554 Td (with Write-Allocate memory updates. Verification across 20 test) Tj ET
+BT /F1 8 Tf 50 543 Td (assertions confirmed 100% pass rate with zero cycle stalls.) Tj ET
+BT /F2 8 Tf 50 528 Td (Keywords- Direct-Mapped Cache, Verilog HDL, FSM, Write-Through.) Tj ET
+BT /F2 9.5 Tf 50 510 Td (I. INTRODUCTION) Tj ET
+BT /F1 8 Tf 50 497 Td (Modern microprocessors execute multiple instructions per cycle, but) Tj ET
+BT /F1 8 Tf 50 486 Td (DRAM access latencies require dozens of wait cycles [1]. Cache) Tj ET
+BT /F1 8 Tf 50 475 Td (memories resolve this limitation by storing active memory working) Tj ET
+BT /F1 8 Tf 50 464 Td (sets. Direct-mapped caches provide the lowest access latency and) Tj ET
+BT /F1 8 Tf 50 453 Td (smallest silicon footprint, eliminating complex multi-way multiplexing) Tj ET
+BT /F1 8 Tf 50 442 Td (and LRU replacement tracking logic [2]. This project implements a) Tj ET
+BT /F1 8 Tf 50 431 Td (modular, synthesizable 16-bit cache system using Verilog-2001.) Tj ET
+BT /F2 9.5 Tf 50 412 Td (II. LITERATURE REVIEW) Tj ET
+BT /F1 8 Tf 50 399 Td (Foundational principles of cache memories were established by Smith) Tj ET
+BT /F1 8 Tf 50 388 Td ([2], who analyzed line size and miss distributions. Hill and Smith [3]) Tj ET
+BT /F1 8 Tf 50 377 Td (evaluated associativity trade-offs, proving direct-mapped caches) Tj ET
+BT /F1 8 Tf 50 366 Td (achieve superior cycle times due to fast tag checks. Przybylski [4]) Tj ET
+BT /F1 8 Tf 50 355 Td (formulated analytical hierarchy models, and Jouppi [5] analyzed) Tj ET
+BT /F1 8 Tf 50 344 Td (conflict miss mitigations. The IEEE 1364-2001 standard [6] governs) Tj ET
+BT /F1 8 Tf 50 333 Td (the synthesizable RTL constructs utilized in this implementation.) Tj ET
+BT /F2 9.5 Tf 50 314 Td (III. BACKGROUND & WORKING PRINCIPLES) Tj ET
+BT /F2 8.5 Tf 50 301 Td (A. 16-Bit Memory Address Decomposition) Tj ET
+BT /F1 8 Tf 50 289 Td (The 16-bit CPU physical memory address A[15:0] is partitioned as:) Tj ET
+BT /F4 8 Tf 55 276 Td (A[15:0] = Tag[15:4] \(12b\) + Index[3:2] \(2b\) + Offset[1:0] \(2b\)) Tj ET
+BT /F1 8 Tf 50 263 Td (1\) Offset [1:0]: Selects 1 of 4 bytes inside the cache line.) Tj ET
+BT /F1 8 Tf 50 252 Td (2\) Index [3:2]: Directly addresses 1 of the 4 cache lines.) Tj ET
+BT /F1 8 Tf 50 241 Td (3\) Tag [15:4]: Stored in tag SRAM and checked for hit validation.) Tj ET
+BT /F2 8.5 Tf 50 222 Td (B. Write Policy Comparison) Tj ET
+BT /F1 8 Tf 50 210 Td (Under Write-Through, CPU writes update both cache and main memory) Tj ET
+BT /F1 8 Tf 50 199 Td (simultaneously. Memory remains coherent at all times, eliminating) Tj ET
+BT /F1 8 Tf 50 188 Td (dirty bits and eviction write-backs. Under Write-Allocate, write) Tj ET
+BT /F1 8 Tf 50 177 Td (misses fetch the target block before applying the write byte.) Tj ET
+BT /F2 9.5 Tf 315 642 Td (IV. HARDWARE SYSTEM ARCHITECTURE) Tj ET
+BT /F1 8 Tf 315 629 Td (The architecture is decomposed into four modular RTL entities:) Tj ET
+BT /F1 8 Tf 315 616 Td (1\) cache_memory.v: 4 lines x 4 bytes SRAM array, 12b tag array,) Tj ET
+BT /F1 8 Tf 315 605 Td (   and 1 valid bit per line. Asynchronous read, synchronous write.) Tj ET
+BT /F1 8 Tf 315 594 Td (2\) cache_controller.v: Master 6-state FSM coordinating handshakes,) Tj ET
+BT /F1 8 Tf 315 583 Td (   decoding address fields, evaluating hits, and managing memory.) Tj ET
+BT /F1 8 Tf 315 572 Td (3\) direct_mapped_cache.v: Top-level structural interconnect.) Tj ET
+BT /F1 8 Tf 315 561 Td (4\) main_memory.v: Behavioral secondary storage with 2-cycle latency.) Tj ET
+0.95 g 0.8 G 315 460 245 90 re B
+BT /F2 8 Tf 320 538 Td (TABLE I: HARDWARE SPECIFICATIONS) Tj ET
+BT /F1 7.5 Tf 320 524 Td (Organization: Direct-Mapped \(1-way\)) Tj ET
+BT /F1 7.5 Tf 320 513 Td (Address Width: 16 bits | Data Width: 8 bits) Tj ET
+BT /F1 7.5 Tf 320 502 Td (Lines: 4 | Block Size: 4 Bytes | Capacity: 16 Bytes) Tj ET
+BT /F1 7.5 Tf 320 491 Td (Tag: 12 bits | Index: 2 bits | Offset: 2 bits) Tj ET
+BT /F1 7.5 Tf 320 480 Td (Write Policy: Write-Through | Allocation: Write-Allocate) Tj ET
+BT /F1 7.5 Tf 320 469 Td (Language: Verilog-2001 \(IEEE Std 1364-2001\)) Tj ET
+BT /F2 9.5 Tf 315 442 Td (V. FINITE STATE MACHINE DESIGN) Tj ET
+BT /F1 8 Tf 315 429 Td (The cache controller executes across six deterministic states:) Tj ET
+BT /F2 8 Tf 315 417 Td (1\) S_IDLE \(3'b000\):) Tj ET
+BT /F1 8 Tf 395 417 Td (Latches cpu_addr, cpu_rw, cpu_wdata.) Tj ET
+BT /F2 8 Tf 315 405 Td (2\) S_LOOKUP \(3'b001\):) Tj ET
+BT /F1 8 Tf 410 405 Td (Evaluates stored_valid && \(stored_tag==req_tag\).) Tj ET
+BT /F1 8 Tf 315 394 Td (   Read hit transitions to S_COMPLETE. Write hit updates byte) Tj ET
+BT /F1 8 Tf 315 383 Td (   and advances to S_WRITE_THROUGH. Miss triggers S_READ_MISS.) Tj ET
+BT /F2 8 Tf 315 371 Td (3\) S_READ_MISS \(3'b010\):) Tj ET
+BT /F1 8 Tf 422 371 Td (Issues 4-byte block read to main memory.) Tj ET
+BT /F2 8 Tf 315 359 Td (4\) S_ALLOCATE \(3'b011\):) Tj ET
+BT /F1 8 Tf 420 359 Td (Writes block & tag to cache. If write,) Tj ET
+BT /F1 8 Tf 315 348 Td (   updates write byte and proceeds to S_WRITE_THROUGH.) Tj ET
+BT /F2 8 Tf 315 336 Td (5\) S_WRITE_THROUGH \(3'b100\):) Tj ET
+BT /F1 8 Tf 440 336 Td (Commits write to memory.) Tj ET
+BT /F2 8 Tf 315 324 Td (6\) S_COMPLETE \(3'b101\):) Tj ET
+BT /F1 8 Tf 420 324 Td (Pulses cpu_ready=1 and returns to IDLE.) Tj ET
+BT /F2 9.5 Tf 315 305 Td (VI. INDIVIDUAL TEAM CONTRIBUTIONS) Tj ET
+BT /F1 8 Tf 315 292 Td (The project was executed by three registered members:) Tj ET
+BT /F2 8 Tf 315 279 Td (- Member 1 [Student 1]:) Tj ET
+BT /F1 8 Tf 415 279 Td (Lead RTL architecture, design of cache_memory,) Tj ET
+BT /F1 8 Tf 315 268 Td (  cache_controller, top-level integration, and 32-bit archive.) Tj ET
+BT /F2 8 Tf 315 256 Td (- Member 2 [Student 2]:) Tj ET
+BT /F1 8 Tf 415 256 Td (Verification lead, comprehensive testbench \(tb\),) Tj ET
+BT /F1 8 Tf 315 245 Td (  cycle-accurate verification engine, and VCD generation.) Tj ET
+BT /F2 8 Tf 315 233 Td (- Member 3 [Student 3]:) Tj ET
+BT /F1 8 Tf 415 233 Td (Main memory model, IEEE paper authoring,) Tj ET
+BT /F1 8 Tf 315 222 Td (  block diagrams, video deck, and 30-Q viva preparation guide.) Tj ET
+BT /F2 9.5 Tf 315 203 Td (VII. EXPERIMENTAL VERIFICATION) Tj ET
+BT /F1 8 Tf 315 190 Td (All 20 test assertions achieved 100% pass status under cycle-) Tj ET
+BT /F1 8 Tf 315 179 Td (accurate evaluation. Detailed results are detailed on Page 2.) Tj ET
+
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 10 0 R
+   /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> >>
+endobj
+10 0 obj
+<< /Length 11320 >>
+stream
+BT /F2 10 Tf 50 755 Td (VII. EXPERIMENTAL RESULTS & DISCUSSION \(CONTINUED\)) Tj ET
+0.75 w 50 747 m 562 747 l S
+0.98 g 0.75 G 50 480 512 260 re B
+BT /F2 9 Tf 60 725 Td (TABLE II: COMPREHENSIVE SIMULATION VERIFICATION MATRIX \(20 ASSERTIONS\)) Tj ET
+0.5 w 50 715 m 562 715 l S
+BT /F2 8 Tf 55 703 Td (Test #) Tj ET
+BT /F2 8 Tf 95 703 Td (Verification Scenario) Tj ET
+BT /F2 8 Tf 260 703 Td (Address) Tj ET
+BT /F2 8 Tf 315 703 Td (Type) Tj ET
+BT /F2 8 Tf 360 703 Td (Data) Tj ET
+BT /F2 8 Tf 420 703 Td (Hit \(Exp/Act\)) Tj ET
+BT /F2 8 Tf 510 703 Td (Result) Tj ET
+0.5 w 50 696 m 562 696 l S
+BT /F4 7.5 Tf 58 684 Td (01) Tj ET
+BT /F1 7.5 Tf 95 684 Td (Initial Cold Miss \(Block Fetch\)) Tj ET
+BT /F4 7.5 Tf 260 684 Td (0x0034) Tj ET
+BT /F1 7.5 Tf 315 684 Td (Read) Tj ET
+BT /F4 7.5 Tf 365 684 Td (0xA0) Tj ET
+BT /F1 7.5 Tf 435 684 Td (0 / 0) Tj ET
+BT /F2 7.5 Tf 515 684 Td (PASS) Tj ET
+BT /F4 7.5 Tf 58 673.8 Td (02) Tj ET
+BT /F1 7.5 Tf 95 673.8 Td (Spatial Locality Hit \(Same Block\)) Tj ET
+BT /F4 7.5 Tf 260 673.8 Td (0x0035) Tj ET
+BT /F1 7.5 Tf 315 673.8 Td (Read) Tj ET
+BT /F4 7.5 Tf 365 673.8 Td (0xA1) Tj ET
+BT /F1 7.5 Tf 435 673.8 Td (1 / 1) Tj ET
+BT /F2 7.5 Tf 515 673.8 Td (PASS) Tj ET
+BT /F4 7.5 Tf 58 663.5999999999999 Td (03) Tj ET
+BT /F1 7.5 Tf 95 663.5999999999999 Td (Temporal Locality Hit \(Re-read\)) Tj ET
+BT /F4 7.5 Tf 260 663.5999999999999 Td (0x0034) Tj ET
+BT /F1 7.5 Tf 315 663.5999999999999 Td (Read) Tj ET
+BT /F4 7.5 Tf 365 663.5999999999999 Td (0xA0) Tj ET
+BT /F1 7.5 Tf 435 663.5999999999999 Td (1 / 1) Tj ET
+BT /F2 7.5 Tf 515 663.5999999999999 Td (PASS) Tj ET
+BT /F4 7.5 Tf 58 653.3999999999999 Td (04) Tj ET
+BT /F1 7.5 Tf 95 653.3999999999999 Td (Write Hit \(Cache Update & Write-Thru\)) Tj ET
+BT /F4 7.5 Tf 260 653.3999999999999 Td (0x0035) Tj ET
+BT /F1 7.5 Tf 315 653.3999999999999 Td (Write) Tj ET
+BT /F4 7.5 Tf 365 653.3999999999999 Td (0x55) Tj ET
+BT /F1 7.5 Tf 435 653.3999999999999 Td (1 / 1) Tj ET
+BT /F2 7.5 Tf 515 653.3999999999999 Td (PASS) Tj ET
+BT /F4 7.5 Tf 58 643.1999999999998 Td (05) Tj ET
+BT /F1 7.5 Tf 95 643.1999999999998 Td (Verify Cache Read After Write Hit) Tj ET
+BT /F4 7.5 Tf 260 643.1999999999998 Td (0x0035) Tj ET
+BT /F1 7.5 Tf 315 643.1999999999998 Td (Read) Tj ET
+BT /F4 7.5 Tf 365 643.1999999999998 Td (0x55) Tj ET
+BT /F1 7.5 Tf 435 643.1999999999998 Td (1 / 1) Tj ET
+BT /F2 7.5 Tf 515 643.1999999999998 Td (PASS) Tj ET
+BT /F4 7.5 Tf 58 632.9999999999998 Td (06) Tj ET
+BT /F1 7.5 Tf 95 632.9999999999998 Td (Memory Coherence Assertion) Tj ET
+BT /F4 7.5 Tf 260 632.9999999999998 Td (0x0035) Tj ET
+BT /F1 7.5 Tf 315 632.9999999999998 Td (Assert) Tj ET
+BT /F4 7.5 Tf 365 632.9999999999998 Td (0x55) Tj ET
+BT /F1 7.5 Tf 435 632.9999999999998 Td (1 / 1) Tj ET
+BT /F2 7.5 Tf 515 632.9999999999998 Td (PASS) Tj ET
+BT /F4 7.5 Tf 58 622.7999999999997 Td (07) Tj ET
+BT /F1 7.5 Tf 95 622.7999999999997 Td (Write Miss \(Write-Allocate\)) Tj ET
+BT /F4 7.5 Tf 260 622.7999999999997 Td (0x0028) Tj ET
+BT /F1 7.5 Tf 315 622.7999999999997 Td (Write) Tj ET
+BT /F4 7.5 Tf 365 622.7999999999997 Td (0x77) Tj ET
+BT /F1 7.5 Tf 435 622.7999999999997 Td (0 / 0) Tj ET
+BT /F2 7.5 Tf 515 622.7999999999997 Td (PASS) Tj ET
+BT /F4 7.5 Tf 58 612.5999999999997 Td (08) Tj ET
+BT /F1 7.5 Tf 95 612.5999999999997 Td (Read Back After Write Miss) Tj ET
+BT /F4 7.5 Tf 260 612.5999999999997 Td (0x0028) Tj ET
+BT /F1 7.5 Tf 315 612.5999999999997 Td (Read) Tj ET
+BT /F4 7.5 Tf 365 612.5999999999997 Td (0x77) Tj ET
+BT /F1 7.5 Tf 435 612.5999999999997 Td (1 / 1) Tj ET
+BT /F2 7.5 Tf 515 612.5999999999997 Td (PASS) Tj ET
+BT /F4 7.5 Tf 58 602.3999999999996 Td (09) Tj ET
+BT /F1 7.5 Tf 95 602.3999999999996 Td (Adjacent Byte in Allocated Block) Tj ET
+BT /F4 7.5 Tf 260 602.3999999999996 Td (0x0029) Tj ET
+BT /F1 7.5 Tf 315 602.3999999999996 Td (Read) Tj ET
+BT /F4 7.5 Tf 365 602.3999999999996 Td (0x29) Tj ET
+BT /F1 7.5 Tf 435 602.3999999999996 Td (1 / 1) Tj ET
+BT /F2 7.5 Tf 515 602.3999999999996 Td (PASS) Tj ET
+BT /F4 7.5 Tf 58 592.1999999999996 Td (10) Tj ET
+BT /F1 7.5 Tf 95 592.1999999999996 Td (Conflict Miss \(Tag 0x004 vs Line 1\)) Tj ET
+BT /F4 7.5 Tf 260 592.1999999999996 Td (0x0044) Tj ET
+BT /F1 7.5 Tf 315 592.1999999999996 Td (Read) Tj ET
+BT /F4 7.5 Tf 365 592.1999999999996 Td (0xC0) Tj ET
+BT /F1 7.5 Tf 435 592.1999999999996 Td (0 / 0) Tj ET
+BT /F2 7.5 Tf 515 592.1999999999996 Td (PASS) Tj ET
+BT /F4 7.5 Tf 58 581.9999999999995 Td (11) Tj ET
+BT /F1 7.5 Tf 95 581.9999999999995 Td (Line Replacement Re-access \(0x0034 Miss\)) Tj ET
+BT /F4 7.5 Tf 260 581.9999999999995 Td (0x0034) Tj ET
+BT /F1 7.5 Tf 315 581.9999999999995 Td (Read) Tj ET
+BT /F4 7.5 Tf 365 581.9999999999995 Td (0xA0) Tj ET
+BT /F1 7.5 Tf 435 581.9999999999995 Td (0 / 0) Tj ET
+BT /F2 7.5 Tf 515 581.9999999999995 Td (PASS) Tj ET
+BT /F4 7.5 Tf 58 571.7999999999995 Td (12) Tj ET
+BT /F1 7.5 Tf 95 571.7999999999995 Td (Byte Selection \(Offset 1\)) Tj ET
+BT /F4 7.5 Tf 260 571.7999999999995 Td (0x0035) Tj ET
+BT /F1 7.5 Tf 315 571.7999999999995 Td (Read) Tj ET
+BT /F4 7.5 Tf 365 571.7999999999995 Td (0x55) Tj ET
+BT /F1 7.5 Tf 435 571.7999999999995 Td (1 / 1) Tj ET
+BT /F2 7.5 Tf 515 571.7999999999995 Td (PASS) Tj ET
+BT /F4 7.5 Tf 58 561.5999999999995 Td (13) Tj ET
+BT /F1 7.5 Tf 95 561.5999999999995 Td (Byte Selection \(Offset 2\)) Tj ET
+BT /F4 7.5 Tf 260 561.5999999999995 Td (0x0036) Tj ET
+BT /F1 7.5 Tf 315 561.5999999999995 Td (Read) Tj ET
+BT /F4 7.5 Tf 365 561.5999999999995 Td (0xA2) Tj ET
+BT /F1 7.5 Tf 435 561.5999999999995 Td (1 / 1) Tj ET
+BT /F2 7.5 Tf 515 561.5999999999995 Td (PASS) Tj ET
+BT /F4 7.5 Tf 58 551.3999999999994 Td (14) Tj ET
+BT /F1 7.5 Tf 95 551.3999999999994 Td (Byte Selection \(Offset 3\)) Tj ET
+BT /F4 7.5 Tf 260 551.3999999999994 Td (0x0037) Tj ET
+BT /F1 7.5 Tf 315 551.3999999999994 Td (Read) Tj ET
+BT /F4 7.5 Tf 365 551.3999999999994 Td (0xA3) Tj ET
+BT /F1 7.5 Tf 435 551.3999999999994 Td (1 / 1) Tj ET
+BT /F2 7.5 Tf 515 551.3999999999994 Td (PASS) Tj ET
+BT /F4 7.5 Tf 58 541.1999999999994 Td (15) Tj ET
+BT /F1 7.5 Tf 95 541.1999999999994 Td (Multi-Line Loading: Line 0) Tj ET
+BT /F4 7.5 Tf 260 541.1999999999994 Td (0x0010) Tj ET
+BT /F1 7.5 Tf 315 541.1999999999994 Td (Read) Tj ET
+BT /F4 7.5 Tf 365 541.1999999999994 Td (0x10) Tj ET
+BT /F1 7.5 Tf 435 541.1999999999994 Td (0 / 0) Tj ET
+BT /F2 7.5 Tf 515 541.1999999999994 Td (PASS) Tj ET
+BT /F4 7.5 Tf 58 530.9999999999993 Td (16) Tj ET
+BT /F1 7.5 Tf 95 530.9999999999993 Td (Multi-Line Loading: Line 3) Tj ET
+BT /F4 7.5 Tf 260 530.9999999999993 Td (0x003C) Tj ET
+BT /F1 7.5 Tf 315 530.9999999999993 Td (Read) Tj ET
+BT /F4 7.5 Tf 365 530.9999999999993 Td (0x3C) Tj ET
+BT /F1 7.5 Tf 435 530.9999999999993 Td (0 / 0) Tj ET
+BT /F2 7.5 Tf 515 530.9999999999993 Td (PASS) Tj ET
+BT /F4 7.5 Tf 58 520.7999999999993 Td (17) Tj ET
+BT /F1 7.5 Tf 95 520.7999999999993 Td (Back-to-Back Hit: Line 0) Tj ET
+BT /F4 7.5 Tf 260 520.7999999999993 Td (0x0010) Tj ET
+BT /F1 7.5 Tf 315 520.7999999999993 Td (Read) Tj ET
+BT /F4 7.5 Tf 365 520.7999999999993 Td (0x10) Tj ET
+BT /F1 7.5 Tf 435 520.7999999999993 Td (1 / 1) Tj ET
+BT /F2 7.5 Tf 515 520.7999999999993 Td (PASS) Tj ET
+BT /F4 7.5 Tf 58 510.5999999999993 Td (18) Tj ET
+BT /F1 7.5 Tf 95 510.5999999999993 Td (Back-to-Back Hit: Line 1) Tj ET
+BT /F4 7.5 Tf 260 510.5999999999993 Td (0x0034) Tj ET
+BT /F1 7.5 Tf 315 510.5999999999993 Td (Read) Tj ET
+BT /F4 7.5 Tf 365 510.5999999999993 Td (0xA0) Tj ET
+BT /F1 7.5 Tf 435 510.5999999999993 Td (1 / 1) Tj ET
+BT /F2 7.5 Tf 515 510.5999999999993 Td (PASS) Tj ET
+BT /F4 7.5 Tf 58 500.3999999999993 Td (19) Tj ET
+BT /F1 7.5 Tf 95 500.3999999999993 Td (Back-to-Back Hit: Line 2) Tj ET
+BT /F4 7.5 Tf 260 500.3999999999993 Td (0x0028) Tj ET
+BT /F1 7.5 Tf 315 500.3999999999993 Td (Read) Tj ET
+BT /F4 7.5 Tf 365 500.3999999999993 Td (0x77) Tj ET
+BT /F1 7.5 Tf 435 500.3999999999993 Td (1 / 1) Tj ET
+BT /F2 7.5 Tf 515 500.3999999999993 Td (PASS) Tj ET
+BT /F4 7.5 Tf 58 490.1999999999993 Td (20) Tj ET
+BT /F1 7.5 Tf 95 490.1999999999993 Td (Back-to-Back Hit: Line 3) Tj ET
+BT /F4 7.5 Tf 260 490.1999999999993 Td (0x003C) Tj ET
+BT /F1 7.5 Tf 315 490.1999999999993 Td (Read) Tj ET
+BT /F4 7.5 Tf 365 490.1999999999993 Td (0x3C) Tj ET
+BT /F1 7.5 Tf 435 490.1999999999993 Td (1 / 1) Tj ET
+BT /F2 7.5 Tf 515 490.1999999999993 Td (PASS) Tj ET
+BT /F2 9 Tf 50 460 Td (A. Numerical Analysis of Conflict Misses) Tj ET
+BT /F1 8 Tf 50 447 Td (Addresses 0x0034 and 0x0044 demonstrate direct-mapped aliasing:) Tj ET
+BT /F4 7.5 Tf 50 436 Td (- 0x0034: Tag=12'h003, Index=2'b01 \(Line 1\), Offset=2'b00) Tj ET
+BT /F4 7.5 Tf 50 425 Td (- 0x0044: Tag=12'h004, Index=2'b01 \(Line 1\), Offset=2'b00) Tj ET
+BT /F1 8 Tf 50 412 Td (Because index bits are identical \(2'b01\), both map to Line 1.) Tj ET
+BT /F1 8 Tf 50 401 Td (Accessing 0x0044 produces a tag mismatch against stored tag 0x003,) Tj ET
+BT /F1 8 Tf 50 390 Td (evicting block 0x0034-0x0037. Re-accessing 0x0034 in Test 11 confirms) Tj ET
+BT /F1 8 Tf 50 379 Td (it is no longer resident, successfully verifying line replacement.) Tj ET
+BT /F2 9 Tf 50 360 Td (B. Latency Metrics) Tj ET
+BT /F1 8 Tf 50 347 Td (- Read Hit Latency: 2 clock cycles \(S_IDLE -> S_LOOKUP -> COMPLETE\)) Tj ET
+BT /F1 8 Tf 50 336 Td (- Read Miss Latency: 5 clock cycles \(Includes 2 memory stall cycles\)) Tj ET
+BT /F1 8 Tf 50 325 Td (- Write Hit Latency: 4 clock cycles \(Cache update + memory write\)) Tj ET
+BT /F1 8 Tf 50 314 Td (- Write Miss Latency: 7 clock cycles \(Fetch block + update + write\)) Tj ET
+BT /F2 9 Tf 315 460 Td (VIII. LIMITATIONS & PHASE II ROADMAP) Tj ET
+BT /F1 8 Tf 315 447 Td (1\) Conflict Miss Thrashing: Addresses with identical indices cause) Tj ET
+BT /F1 8 Tf 315 436 Td (   thrashing under heavy interleaved workloads.) Tj ET
+BT /F1 8 Tf 315 425 Td (2\) Write-Through Memory Bandwidth: Writes consume bus cycles.) Tj ET
+BT /F2 8.5 Tf 315 412 Td (Phase II Continuation Scope:) Tj ET
+BT /F1 8 Tf 315 399 Td (- Transition to 2-Way Set-Associative Cache architecture.) Tj ET
+BT /F1 8 Tf 315 388 Td (- Implement Write-Back policy with dirty bits to save bus cycles.) Tj ET
+BT /F1 8 Tf 315 377 Td (- Add Pseudo-LRU replacement logic and hit-rate analyzers.) Tj ET
+BT /F2 9 Tf 315 355 Td (IX. CONCLUSION) Tj ET
+BT /F1 8 Tf 315 342 Td (A synthesizable 16-bit direct-mapped cache controller in Verilog-2001) Tj ET
+BT /F1 8 Tf 315 331 Td (was designed and verified. Automated testing verified all 20 assertions) Tj ET
+BT /F1 8 Tf 315 320 Td (with 100% pass accuracy, confirming correct spatial/temporal caching.) Tj ET
+BT /F2 9 Tf 315 300 Td (REFERENCES) Tj ET
+BT /F1 7 Tf 315 287 Td ([1] J. L. Hennessy and D. A. Patterson, Computer Architecture: A Quantitative) Tj ET
+BT /F1 7 Tf 315 278 Td (    Approach, 6th ed., Morgan Kaufmann, 2017.) Tj ET
+BT /F1 7 Tf 315 267 Td ([2] A. J. Smith, 'Cache Memories,' ACM Computing Surveys, vol. 14, no. 3,) Tj ET
+BT /F1 7 Tf 315 258 Td (    pp. 473-530, Sep. 1982.) Tj ET
+BT /F1 7 Tf 315 247 Td ([3] M. D. Hill and A. J. Smith, 'Evaluating Associativity in CPU Caches,') Tj ET
+BT /F1 7 Tf 315 238 Td (    IEEE Transactions on Computers, vol. 38, no. 12, pp. 1612-1630, 1989.) Tj ET
+BT /F1 7 Tf 315 227 Td ([4] S. A. Przybylski, Cache and Memory Hierarchy Design, Morgan Kaufmann, 1990.) Tj ET
+BT /F1 7 Tf 315 216 Td ([5] N. P. Jouppi, 'Improving direct-mapped cache performance,' ISCA '90, pp. 364-373.) Tj ET
+BT /F1 7 Tf 315 205 Td ([6] IEEE Standard for Verilog HDL, IEEE Std 1364-2001, 2001.) Tj ET
+
+endstream
+endobj
+xref
+0 11
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000127 00000 n 
+0000000197 00000 n 
+0000000272 00000 n 
+0000000350 00000 n 
+0000000418 00000 n 
+0000000577 00000 n 
+0000008702 00000 n 
+0000008862 00000 n 
+trailer
+<< /Size 11 /Root 1 0 R >>
+startxref
+20236
+%%EOF

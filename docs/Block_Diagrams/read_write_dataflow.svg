@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="readGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#0369A1" />
+    </linearGradient>
+    <linearGradient id="writeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#5B21B6" />
+    </linearGradient>
+    <filter id="shadow" x="-3%" y="-5%" width="106%" height="112%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-opacity="0.12" />
+    </filter>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7" />
+    </marker>
+    <marker id="arrowP" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#7C3AED" />
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#F8FAFC" />
+
+  <text x="475" y="32" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#0F172A">
+    Read &amp; Write Hardware Dataflow Datapath Architecture
+  </text>
+  <text x="475" y="52" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#64748B">
+    Comparison of Signal Flow for Read Hits, Read Misses, Write Hits, and Write Misses
+  </text>
+
+  <!-- Left Container: READ OPERATION DATAFLOW -->
+  <g transform="translate(40, 75)" filter="url(#shadow)">
+    <rect width="415" height="370" rx="10" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
+    <rect width="415" height="42" rx="10" fill="url(#readGrad)" />
+    <rect y="32" width="415" height="10" fill="url(#readGrad)" />
+    <text x="207" y="27" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">
+      A. READ TRANSACTION DATAFLOW (cpu_rw = 0)
+    </text>
+
+    <!-- Path 1: Read Hit -->
+    <rect x="20" y="55" width="375" height="135" rx="6" fill="#F0F9FF" stroke="#BAE6FD" />
+    <text x="35" y="78" font-family="sans-serif" font-size="12" font-weight="700" fill="#0369A1">1. Read Hit (Zero Memory Stall)</text>
+    <text x="35" y="98" font-family="sans-serif" font-size="10.5" fill="#334155">• CPU presents Addr &amp; cpu_req.</text>
+    <text x="35" y="115" font-family="sans-serif" font-size="10.5" fill="#334155">• Line Index [3:2] indexes Tag &amp; Data SRAM asynchronously.</text>
+    <text x="35" y="132" font-family="sans-serif" font-size="10.5" fill="#334155">• Comparator matches Tag; Valid bit active -&gt; is_hit = 1.</text>
+    <text x="35" y="149" font-family="sans-serif" font-size="10.5" fill="#334155">• Offset [1:0] selects target byte from line.</text>
+    <text x="35" y="166" font-family="sans-serif" font-size="10.5" font-weight="600" fill="#0284C7">• cpu_rdata driven immediately; cpu_ready asserted.</text>
+
+    <!-- Path 2: Read Miss -->
+    <rect x="20" y="205" width="375" height="145" rx="6" fill="#F8FAFC" stroke="#E2E8F0" />
+    <text x="35" y="228" font-family="sans-serif" font-size="12" font-weight="700" fill="#0F172A">2. Read Miss (Line Allocation)</text>
+    <text x="35" y="248" font-family="sans-serif" font-size="10.5" fill="#334155">• Tag mismatch or Valid = 0 detected in S_LOOKUP.</text>
+    <text x="35" y="265" font-family="sans-serif" font-size="10.5" fill="#334155">• Controller asserts mem_req with 4-byte aligned base address.</text>
+    <text x="35" y="282" font-family="sans-serif" font-size="10.5" fill="#334155">• Memory completes burst read in 2 cycles (mem_ready = 1).</text>
+    <text x="35" y="299" font-family="sans-serif" font-size="10.5" fill="#334155">• S_ALLOCATE writes 4 bytes + 12b Tag + asserts Valid bit.</text>
+    <text x="35" y="316" font-family="sans-serif" font-size="10.5" fill="#334155">• Target byte extracted from fetched block to cpu_rdata.</text>
+    <text x="35" y="333" font-family="sans-serif" font-size="10.5" font-weight="600" fill="#0F172A">• cpu_ready asserted; spatial locality established.</text>
+  </g>
+
+  <!-- Right Container: WRITE OPERATION DATAFLOW -->
+  <g transform="translate(495, 75)" filter="url(#shadow)">
+    <rect width="415" height="370" rx="10" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.5" />
+    <rect width="415" height="42" rx="10" fill="url(#writeGrad)" />
+    <rect y="32" width="415" height="10" fill="url(#writeGrad)" />
+    <text x="207" y="27" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">
+      B. WRITE TRANSACTION DATAFLOW (cpu_rw = 1)
+    </text>
+
+    <!-- Path 3: Write Hit -->
+    <rect x="20" y="55" width="375" height="135" rx="6" fill="#FAF5FF" stroke="#E9D5FF" />
+    <text x="35" y="78" font-family="sans-serif" font-size="12" font-weight="700" fill="#6D28D9">1. Write Hit (Write-Through Policy)</text>
+    <text x="35" y="98" font-family="sans-serif" font-size="10.5" fill="#334155">• CPU presents Addr, wdata &amp; cpu_req.</text>
+    <text x="35" y="115" font-family="sans-serif" font-size="10.5" fill="#334155">• Tag matches existing valid line -&gt; is_hit = 1.</text>
+    <text x="35" y="132" font-family="sans-serif" font-size="10.5" fill="#334155">• Cache line byte updated synchronously via cache_we_byte.</text>
+    <text x="35" y="149" font-family="sans-serif" font-size="10.5" fill="#334155">• S_WRITE_THROUGH drives mem_req with wdata to Main Memory.</text>
+    <text x="35" y="166" font-family="sans-serif" font-size="10.5" font-weight="600" fill="#7C3AED">• Both Cache &amp; Main Memory stay synchronized (No Dirty bits).</text>
+
+    <!-- Path 4: Write Miss -->
+    <rect x="20" y="205" width="375" height="145" rx="6" fill="#F8FAFC" stroke="#E2E8F0" />
+    <text x="35" y="228" font-family="sans-serif" font-size="12" font-weight="700" fill="#0F172A">2. Write Miss (Write-Allocate &amp; Write-Through)</text>
+    <text x="35" y="248" font-family="sans-serif" font-size="10.5" fill="#334155">• Tag mismatch triggers Write-Allocate policy.</text>
+    <text x="35" y="265" font-family="sans-serif" font-size="10.5" fill="#334155">• Complete 4-byte block fetched from Main Memory first.</text>
+    <text x="35" y="282" font-family="sans-serif" font-size="10.5" fill="#334155">• Cache line populated with block, tag, and valid bit.</text>
+    <text x="35" y="299" font-family="sans-serif" font-size="10.5" fill="#334155">• Target byte overwritten in Cache with cpu_wdata.</text>
+    <text x="35" y="316" font-family="sans-serif" font-size="10.5" fill="#334155">• Write-through initiated to commit new byte into Main Memory.</text>
+    <text x="35" y="333" font-family="sans-serif" font-size="10.5" font-weight="600" fill="#0F172A">• cpu_ready pulsed after memory write acknowledges.</text>
+  </g>
+</svg>

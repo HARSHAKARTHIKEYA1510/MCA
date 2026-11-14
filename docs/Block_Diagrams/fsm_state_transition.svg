@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 520" width="100%" height="100%">
+  <defs>
+    <linearGradient id="idleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#64748B" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+    <linearGradient id="lookupGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+    <linearGradient id="missGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EF4444" />
+      <stop offset="100%" stop-color="#B91C1C" />
+    </linearGradient>
+    <linearGradient id="allocGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+    <linearGradient id="wrThruGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#6D28D9" />
+    </linearGradient>
+    <linearGradient id="doneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-opacity="0.15" />
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1E293B" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669" />
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#DC2626" />
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#7C3AED" />
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#F8FAFC" />
+
+  <!-- Title -->
+  <text x="475" y="32" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#0F172A">
+    Finite State Machine (FSM) State Transition Diagram
+  </text>
+  <text x="475" y="52" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#64748B">
+    Deterministic 6-State Moore/Mealy Controller for 16-Bit Direct-Mapped Cache
+  </text>
+
+  <!-- State 0: S_IDLE -->
+  <g transform="translate(60, 200)" filter="url(#shadow)">
+    <rect width="130" height="75" rx="10" fill="url(#idleGrad)" />
+    <text x="65" y="30" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">S_IDLE</text>
+    <text x="65" y="48" text-anchor="middle" font-family="monospace" font-size="11" fill="#E2E8F0">3'b000</text>
+    <text x="65" y="64" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#CBD5E1">cpu_ready = 0</text>
+  </g>
+
+  <!-- State 1: S_LOOKUP -->
+  <g transform="translate(260, 200)" filter="url(#shadow)">
+    <rect width="140" height="75" rx="10" fill="url(#lookupGrad)" />
+    <text x="70" y="30" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">S_LOOKUP</text>
+    <text x="70" y="48" text-anchor="middle" font-family="monospace" font-size="11" fill="#DBEAFE">3'b001</text>
+    <text x="70" y="64" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#BFDBFE">Tag check &amp; Hit logic</text>
+  </g>
+
+  <!-- State 2: S_READ_MISS -->
+  <g transform="translate(470, 70)" filter="url(#shadow)">
+    <rect width="150" height="75" rx="10" fill="url(#missGrad)" />
+    <text x="75" y="30" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">S_READ_MISS</text>
+    <text x="75" y="48" text-anchor="middle" font-family="monospace" font-size="11" fill="#FEE2E2">3'b010</text>
+    <text x="75" y="64" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#FECACA">mem_req=1 (Read Blk)</text>
+  </g>
+
+  <!-- State 3: S_ALLOCATE -->
+  <g transform="translate(690, 70)" filter="url(#shadow)">
+    <rect width="150" height="75" rx="10" fill="url(#allocGrad)" />
+    <text x="75" y="30" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">S_ALLOCATE</text>
+    <text x="75" y="48" text-anchor="middle" font-family="monospace" font-size="11" fill="#FEF3C7">3'b011</text>
+    <text x="75" y="64" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#FDE68A">Store 4B Blk &amp; Tag</text>
+  </g>
+
+  <!-- State 4: S_WRITE_THROUGH -->
+  <g transform="translate(470, 340)" filter="url(#shadow)">
+    <rect width="170" height="75" rx="10" fill="url(#wrThruGrad)" />
+    <text x="85" y="28" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">S_WRITE_THROUGH</text>
+    <text x="85" y="46" text-anchor="middle" font-family="monospace" font-size="11" fill="#EDE9FE">3'b100</text>
+    <text x="85" y="62" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#DDD6FE">mem_req=1 (Write Byte)</text>
+  </g>
+
+  <!-- State 5: S_COMPLETE -->
+  <g transform="translate(690, 240)" filter="url(#shadow)">
+    <rect width="150" height="75" rx="10" fill="url(#doneGrad)" />
+    <text x="75" y="30" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">S_COMPLETE</text>
+    <text x="75" y="48" text-anchor="middle" font-family="monospace" font-size="11" fill="#D1FAE5">3'b101</text>
+    <text x="75" y="64" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#A7F3D0">cpu_ready=1 pulse</text>
+  </g>
+
+  <!-- Transition 1: IDLE -> LOOKUP -->
+  <line x1="190" y1="237" x2="255" y2="237" stroke="#1E293B" stroke-width="2.5" marker-end="url(#arrow)" />
+  <text x="225" y="230" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="700" fill="#1E293B">cpu_req=1</text>
+
+  <!-- Transition 2: LOOKUP -> COMPLETE (Read Hit) -->
+  <path d="M 400 225 C 500 210, 600 230, 685 260" fill="none" stroke="#059669" stroke-width="2.5" marker-end="url(#arrowGreen)" />
+  <text x="545" y="225" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="700" fill="#059669">Hit &amp;&amp; !cpu_rw (Read Hit)</text>
+
+  <!-- Transition 3: LOOKUP -> WRITE_THROUGH (Write Hit) -->
+  <path d="M 370 275 C 400 320, 420 350, 465 365" fill="none" stroke="#7C3AED" stroke-width="2.5" marker-end="url(#arrowPurple)" />
+  <text x="400" y="340" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="700" fill="#7C3AED">Hit &amp;&amp; cpu_rw (Write Hit)</text>
+
+  <!-- Transition 4: LOOKUP -> READ_MISS (Miss) -->
+  <path d="M 370 200 C 400 160, 420 130, 465 115" fill="none" stroke="#DC2626" stroke-width="2.5" marker-end="url(#arrowRed)" />
+  <text x="400" y="150" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="700" fill="#DC2626">!Hit (Read/Write Miss)</text>
+
+  <!-- Transition 5: READ_MISS -> ALLOCATE -->
+  <line x1="620" y1="107" x2="685" y2="107" stroke="#1E293B" stroke-width="2.5" marker-end="url(#arrow)" />
+  <text x="652" y="98" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="700" fill="#1E293B">mem_ready=1</text>
+
+  <!-- Transition 6: ALLOCATE -> COMPLETE (Read Miss) -->
+  <line x1="765" y1="145" x2="765" y2="235" stroke="#059669" stroke-width="2.5" marker-end="url(#arrowGreen)" />
+  <text x="815" y="190" text-anchor="middle" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#059669">!cpu_rw (Read Miss)</text>
+
+  <!-- Transition 7: ALLOCATE -> WRITE_THROUGH (Write Miss - Write Allocate) -->
+  <path d="M 720 145 C 680 200, 660 280, 635 340" fill="none" stroke="#7C3AED" stroke-width="2.5" marker-end="url(#arrowPurple)" />
+  <text x="690" y="270" text-anchor="middle" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#7C3AED">cpu_rw (Write Allocate)</text>
+
+  <!-- Transition 8: WRITE_THROUGH -> COMPLETE -->
+  <path d="M 640 375 C 670 370, 710 350, 735 320" fill="none" stroke="#1E293B" stroke-width="2.5" marker-end="url(#arrow)" />
+  <text x="705" y="380" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="700" fill="#1E293B">mem_ready=1</text>
+
+  <!-- Transition 9: COMPLETE -> IDLE (Return loop) -->
+  <path d="M 765 315 C 765 460, 125 460, 125 280" fill="none" stroke="#1E293B" stroke-width="2.5" marker-end="url(#arrow)" />
+  <text x="445" y="475" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#1E293B">
+    Transaction Done (cpu_ready asserted for 1 cycle) -> Return to S_IDLE
+  </text>
+</svg>

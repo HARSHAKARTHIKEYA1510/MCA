@@ -1,0 +1,17 @@
+stateDiagram-v2
+    [*] --> S_IDLE
+
+    S_IDLE --> S_LOOKUP : cpu_req == 1
+    
+    S_LOOKUP --> S_COMPLETE : is_hit == 1 && cpu_rw == 0 (Read Hit)
+    S_LOOKUP --> S_WRITE_THROUGH : is_hit == 1 && cpu_rw == 1 (Write Hit)
+    S_LOOKUP --> S_READ_MISS : is_hit == 0 (Read or Write Miss)
+    
+    S_READ_MISS --> S_ALLOCATE : mem_ready == 1
+    
+    S_ALLOCATE --> S_COMPLETE : cpu_rw == 0 (Read Miss Done)
+    S_ALLOCATE --> S_WRITE_THROUGH : cpu_rw == 1 (Write Miss - Write Allocate)
+    
+    S_WRITE_THROUGH --> S_COMPLETE : mem_ready == 1 (Memory Write Committed)
+    
+    S_COMPLETE --> S_IDLE : cpu_ready pulsed (1 Cycle)

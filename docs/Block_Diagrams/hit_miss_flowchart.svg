@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 560" width="100%" height="100%">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#1E293B" />
+    </linearGradient>
+    <filter id="boxShadow" x="-3%" y="-5%" width="106%" height="112%">
+      <feDropShadow dx="1" dy="3" stdDeviation="3" flood-opacity="0.12" />
+    </filter>
+    <marker id="flowArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155" />
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#F8FAFC" />
+
+  <text x="475" y="32" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#0F172A">
+    Cache Operation Flowchart: Read &amp; Write Hit / Miss Execution Paths
+  </text>
+  <text x="475" y="52" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#64748B">
+    Execution Sequencing for Write-Through and Write-Allocate Hardware Control
+  </text>
+
+  <!-- Start Node -->
+  <g transform="translate(385, 75)" filter="url(#boxShadow)">
+    <rect width="180" height="42" rx="21" fill="#4F46E5" />
+    <text x="90" y="26" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">
+      CPU Request (cpu_req=1)
+    </text>
+  </g>
+
+  <!-- Step 1: Decode Address -->
+  <line x1="475" y1="117" x2="475" y2="145" stroke="#334155" stroke-width="2" marker-end="url(#flowArrow)" />
+  <g transform="translate(360, 145)" filter="url(#boxShadow)">
+    <rect width="230" height="42" rx="6" fill="#FFFFFF" stroke="#6366F1" stroke-width="1.5" />
+    <text x="115" y="26" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="600" fill="#1E293B">
+      Extract Tag [15:4], Index [3:2], Offset [1:0]
+    </text>
+  </g>
+
+  <!-- Step 2: Decision 1 (Valid & Tag Match?) -->
+  <line x1="475" y1="187" x2="475" y2="215" stroke="#334155" stroke-width="2" marker-end="url(#flowArrow)" />
+  <g transform="translate(365, 215)" filter="url(#boxShadow)">
+    <polygon points="110,0 220,38 110,76 0,38" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5" />
+    <text x="110" y="34" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#92400E">
+      Valid[Index] == 1 &amp;&amp;
+    </text>
+    <text x="110" y="48" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#92400E">
+      Tag[Index] == Tag?
+    </text>
+  </g>
+
+  <!-- Branch YES (Hit) -> Left -->
+  <line x1="365" y1="253" x2="220" y2="253" stroke="#059669" stroke-width="2" marker-end="url(#flowArrow)" />
+  <text x="290" y="245" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#059669">YES (Cache Hit)</text>
+
+  <!-- Branch NO (Miss) -> Right -->
+  <line x1="585" y1="253" x2="720" y2="253" stroke="#DC2626" stroke-width="2" marker-end="url(#flowArrow)" />
+  <text x="655" y="245" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#DC2626">NO (Cache Miss)</text>
+
+  <!-- LEFT: HIT SUB-BRANCH -->
+  <g transform="translate(110, 280)" filter="url(#boxShadow)">
+    <polygon points="110,0 220,35 110,70 0,35" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.5" />
+    <text x="110" y="39" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#0369A1">
+      cpu_rw == 0 (Read)?
+    </text>
+  </g>
+  <line x1="220" y1="253" x2="220" y2="280" stroke="#059669" stroke-width="2" marker-end="url(#flowArrow)" />
+
+  <!-- Left: Read Hit Path -->
+  <line x1="110" y1="315" x2="50" y2="315" stroke="#059669" stroke-width="2" />
+  <line x1="50" y1="315" x2="50" y2="370" stroke="#059669" stroke-width="2" marker-end="url(#flowArrow)" />
+  <text x="75" y="308" font-family="sans-serif" font-size="10" font-weight="700" fill="#059669">Read</text>
+  <g transform="translate(10, 370)" filter="url(#boxShadow)">
+    <rect width="130" height="55" rx="6" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5" />
+    <text x="65" y="22" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="700" fill="#15803D">READ HIT</text>
+    <text x="65" y="36" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#166534">cpu_rdata = Cache[Offset]</text>
+    <text x="65" y="48" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#166534">cpu_hit = 1</text>
+  </g>
+
+  <!-- Right: Write Hit Path -->
+  <line x1="330" y1="315" x2="380" y2="315" stroke="#7C3AED" stroke-width="2" />
+  <line x1="380" y1="315" x2="380" y2="370" stroke="#7C3AED" stroke-width="2" marker-end="url(#flowArrow)" />
+  <text x="345" y="308" font-family="sans-serif" font-size="10" font-weight="700" fill="#7C3AED">Write</text>
+  <g transform="translate(300, 370)" filter="url(#boxShadow)">
+    <rect width="160" height="55" rx="6" fill="#FAF5FF" stroke="#9333EA" stroke-width="1.5" />
+    <text x="80" y="20" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="700" fill="#7E22CE">WRITE HIT</text>
+    <text x="80" y="34" text-anchor="middle" font-family="sans-serif" font-size="8.5" fill="#6B21A8">1. Update Cache[Index][Offset]</text>
+    <text x="80" y="47" text-anchor="middle" font-family="sans-serif" font-size="8.5" fill="#6B21A8">2. Write-Through to Memory</text>
+  </g>
+
+  <!-- RIGHT: MISS SUB-BRANCH -->
+  <line x1="720" y1="253" x2="720" y2="295" stroke="#DC2626" stroke-width="2" marker-end="url(#flowArrow)" />
+  <g transform="translate(615, 295)" filter="url(#boxShadow)">
+    <rect width="210" height="50" rx="6" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.5" />
+    <text x="105" y="22" text-anchor="middle" font-family="sans-serif" font-size="10.5" font-weight="700" fill="#B91C1C">ALLOCATE BLOCK (Write-Allocate)</text>
+    <text x="105" y="38" text-anchor="middle" font-family="sans-serif" font-size="9.5" fill="#991B1B">Fetch 4 Bytes from Main Memory</text>
+  </g>
+
+  <line x1="720" y1="345" x2="720" y2="370" stroke="#DC2626" stroke-width="2" marker-end="url(#flowArrow)" />
+  <g transform="translate(620, 370)" filter="url(#boxShadow)">
+    <polygon points="100,0 200,32 100,64 0,32" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.5" />
+    <text x="100" y="36" text-anchor="middle" font-family="sans-serif" font-size="10.5" font-weight="700" fill="#0369A1">
+      cpu_rw == 0 (Read)?
+    </text>
+  </g>
+
+  <!-- Read Miss Completion -->
+  <line x1="620" y1="402" x2="550" y2="402" stroke="#059669" stroke-width="2" />
+  <line x1="550" y1="402" x2="550" y2="445" stroke="#059669" stroke-width="2" marker-end="url(#flowArrow)" />
+  <text x="580" y="395" font-family="sans-serif" font-size="10" font-weight="700" fill="#059669">Read</text>
+  <g transform="translate(480, 445)" filter="url(#boxShadow)">
+    <rect width="140" height="42" rx="6" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5" />
+    <text x="70" y="18" text-anchor="middle" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#15803D">READ MISS DONE</text>
+    <text x="70" y="32" text-anchor="middle" font-family="sans-serif" font-size="8.5" fill="#166534">cpu_rdata = Memory Block</text>
+  </g>
+
+  <!-- Write Miss Completion (Write-Allocate & Write-Through) -->
+  <line x1="820" y1="402" x2="870" y2="402" stroke="#7C3AED" stroke-width="2" />
+  <line x1="870" y1="402" x2="870" y2="445" stroke="#7C3AED" stroke-width="2" marker-end="url(#flowArrow)" />
+  <text x="835" y="395" font-family="sans-serif" font-size="10" font-weight="700" fill="#7C3AED">Write</text>
+  <g transform="translate(780, 445)" filter="url(#boxShadow)">
+    <rect width="160" height="42" rx="6" fill="#FAF5FF" stroke="#9333EA" stroke-width="1.5" />
+    <text x="80" y="18" text-anchor="middle" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#7E22CE">WRITE MISS DONE</text>
+    <text x="80" y="32" text-anchor="middle" font-family="sans-serif" font-size="8.5" fill="#6B21A8">Write to Cache &amp; Main Mem</text>
+  </g>
+
+  <!-- Merging into Complete Terminal Node -->
+  <g transform="translate(365, 500)" filter="url(#boxShadow)">
+    <rect width="220" height="38" rx="19" fill="#10B981" />
+    <text x="110" y="24" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">
+      Assert cpu_ready=1 Pulse &amp; Complete
+    </text>
+  </g>
+
+  <!-- Convergence lines -->
+  <path d="M 75 425 C 75 480, 360 519, 365 519" fill="none" stroke="#64748B" stroke-width="1.5" />
+  <path d="M 380 425 C 380 460, 410 490, 420 500" fill="none" stroke="#64748B" stroke-width="1.5" />
+  <path d="M 550 487 C 550 495, 530 500, 520 500" fill="none" stroke="#64748B" stroke-width="1.5" />
+  <path d="M 860 487 C 860 520, 590 520, 585 520" fill="none" stroke="#64748B" stroke-width="1.5" />
+
+</svg>

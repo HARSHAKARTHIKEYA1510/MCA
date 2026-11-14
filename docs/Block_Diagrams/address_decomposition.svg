@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="tagGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+    <linearGradient id="idxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    <linearGradient id="offGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <filter id="boxShadow" x="-3%" y="-5%" width="106%" height="112%">
+      <feDropShadow dx="1" dy="3" stdDeviation="3" flood-opacity="0.12" />
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#F8FAFC" />
+
+  <!-- Header -->
+  <text x="475" y="32" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#0F172A">
+    16-Bit Memory Address Decomposition &amp; Index Mapping Scheme
+  </text>
+  <text x="475" y="52" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#64748B">
+    Direct-Mapped Organization: 4 Cache Lines (2-bit Index) x 4 Bytes per Line (2-bit Offset)
+  </text>
+
+  <!-- Main Address Bar Container -->
+  <g transform="translate(60, 75)" filter="url(#boxShadow)">
+    <!-- Tag Field -->
+    <rect x="0" y="0" width="510" height="70" rx="8" fill="url(#tagGrad)" />
+    <text x="255" y="32" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">
+      TAG FIELD [15:4]
+    </text>
+    <text x="255" y="54" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="600" fill="#DBEAFE">
+      12 Bits Width (4096 Unique Memory Blocks / Index)
+    </text>
+
+    <!-- Index Field -->
+    <rect x="520" y="0" width="150" height="70" rx="8" fill="url(#idxGrad)" />
+    <text x="595" y="32" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">
+      INDEX [3:2]
+    </text>
+    <text x="595" y="54" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="600" fill="#D1FAE5">
+      2 Bits (4 Lines)
+    </text>
+
+    <!-- Offset Field -->
+    <rect x="680" y="0" width="150" height="70" rx="8" fill="url(#offGrad)" />
+    <text x="755" y="32" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">
+      OFFSET [1:0]
+    </text>
+    <text x="755" y="54" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="600" fill="#FEF3C7">
+      2 Bits (4 Bytes)
+    </text>
+  </g>
+
+  <!-- Bit labels below bar -->
+  <text x="65" y="160" font-family="monospace" font-size="11" font-weight="600" fill="#1E3A8A">Bit 15 (MSB)</text>
+  <text x="560" y="160" text-anchor="end" font-family="monospace" font-size="11" font-weight="600" fill="#1E3A8A">Bit 4</text>
+  <text x="585" y="160" font-family="monospace" font-size="11" font-weight="600" fill="#065F46">Bit 3</text>
+  <text x="725" y="160" text-anchor="end" font-family="monospace" font-size="11" font-weight="600" fill="#065F46">Bit 2</text>
+  <text x="745" y="160" font-family="monospace" font-size="11" font-weight="600" fill="#92400E">Bit 1</text>
+  <text x="885" y="160" text-anchor="end" font-family="monospace" font-size="11" font-weight="600" fill="#92400E">Bit 0 (LSB)</text>
+
+  <!-- Table Container of Numerical Examples -->
+  <g transform="translate(60, 180)" filter="url(#boxShadow)">
+    <rect width="830" height="270" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
+    
+    <!-- Table Header -->
+    <rect width="830" height="38" rx="8" fill="#F1F5F9" />
+    <rect y="30" width="830" height="8" fill="#F1F5F9" />
+    <text x="20" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#334155">Hex Address</text>
+    <text x="130" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#334155">16-Bit Binary</text>
+    <text x="320" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#1D4ED8">Tag [15:4]</text>
+    <text x="450" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#047857">Index [3:2]</text>
+    <text x="560" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#D97706">Offset [1:0]</text>
+    <text x="670" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#0F172A">Operational Significance</text>
+    <line x1="0" y1="38" x2="830" y2="38" stroke="#CBD5E1" stroke-width="1" />
+
+    <!-- Row 1: 0x0034 -->
+    <text x="20" y="65" font-family="monospace" font-size="11" font-weight="700" fill="#0F172A">0x0034</text>
+    <text x="130" y="65" font-family="monospace" font-size="11" fill="#475569">0000 0000 0011 0100</text>
+    <text x="320" y="65" font-family="monospace" font-size="11" font-weight="700" fill="#1D4ED8">12'h003</text>
+    <text x="450" y="65" font-family="monospace" font-size="11" font-weight="700" fill="#047857">2'b01 (Line 1)</text>
+    <text x="560" y="65" font-family="monospace" font-size="11" font-weight="700" fill="#D97706">2'b00 (Byte 0)</text>
+    <text x="670" y="65" font-family="sans-serif" font-size="10.5" fill="#1E293B">Cold Miss: Fetches Block (0xA0..0xA3)</text>
+    <line x1="15" y1="78" x2="815" y2="78" stroke="#F1F5F9" stroke-width="1" />
+
+    <!-- Row 2: 0x0035 -->
+    <text x="20" y="100" font-family="monospace" font-size="11" font-weight="700" fill="#0F172A">0x0035</text>
+    <text x="130" y="100" font-family="monospace" font-size="11" fill="#475569">0000 0000 0011 0101</text>
+    <text x="320" y="100" font-family="monospace" font-size="11" font-weight="700" fill="#1D4ED8">12'h003</text>
+    <text x="450" y="100" font-family="monospace" font-size="11" font-weight="700" fill="#047857">2'b01 (Line 1)</text>
+    <text x="560" y="100" font-family="monospace" font-size="11" font-weight="700" fill="#D97706">2'b01 (Byte 1)</text>
+    <text x="670" y="100" font-family="sans-serif" font-size="10.5" font-weight="600" fill="#059669">Spatial Locality HIT (Same Block)</text>
+    <line x1="15" y1="113" x2="815" y2="113" stroke="#F1F5F9" stroke-width="1" />
+
+    <!-- Row 3: 0x0036 -->
+    <text x="20" y="135" font-family="monospace" font-size="11" font-weight="700" fill="#0F172A">0x0036</text>
+    <text x="130" y="135" font-family="monospace" font-size="11" fill="#475569">0000 0000 0011 0110</text>
+    <text x="320" y="135" font-family="monospace" font-size="11" font-weight="700" fill="#1D4ED8">12'h003</text>
+    <text x="450" y="135" font-family="monospace" font-size="11" font-weight="700" fill="#047857">2'b01 (Line 1)</text>
+    <text x="560" y="135" font-family="monospace" font-size="11" font-weight="700" fill="#D97706">2'b10 (Byte 2)</text>
+    <text x="670" y="135" font-family="sans-serif" font-size="10.5" font-weight="600" fill="#059669">Spatial Locality HIT (Byte 2)</text>
+    <line x1="15" y1="148" x2="815" y2="148" stroke="#F1F5F9" stroke-width="1" />
+
+    <!-- Row 4: 0x0037 -->
+    <text x="20" y="170" font-family="monospace" font-size="11" font-weight="700" fill="#0F172A">0x0037</text>
+    <text x="130" y="170" font-family="monospace" font-size="11" fill="#475569">0000 0000 0011 0111</text>
+    <text x="320" y="170" font-family="monospace" font-size="11" font-weight="700" fill="#1D4ED8">12'h003</text>
+    <text x="450" y="170" font-family="monospace" font-size="11" font-weight="700" fill="#047857">2'b01 (Line 1)</text>
+    <text x="560" y="170" font-family="monospace" font-size="11" font-weight="700" fill="#D97706">2'b11 (Byte 3)</text>
+    <text x="670" y="170" font-family="sans-serif" font-size="10.5" font-weight="600" fill="#059669">Spatial Locality HIT (Byte 3)</text>
+    <line x1="15" y1="183" x2="815" y2="183" stroke="#CBD5E1" stroke-width="1.5" />
+
+    <!-- Row 5: 0x0044 (Conflict Miss highlight) -->
+    <rect x="5" y="188" width="820" height="34" rx="4" fill="#FEF2F2" />
+    <text x="20" y="210" font-family="monospace" font-size="11" font-weight="700" fill="#DC2626">0x0044</text>
+    <text x="130" y="210" font-family="monospace" font-size="11" fill="#DC2626">0000 0000 0100 0100</text>
+    <text x="320" y="210" font-family="monospace" font-size="11" font-weight="700" fill="#DC2626">12'h004</text>
+    <text x="450" y="210" font-family="monospace" font-size="11" font-weight="700" fill="#DC2626">2'b01 (Line 1)</text>
+    <text x="560" y="210" font-family="monospace" font-size="11" font-weight="700" fill="#DC2626">2'b00 (Byte 0)</text>
+    <text x="670" y="210" font-family="sans-serif" font-size="10.5" font-weight="700" fill="#DC2626">CONFLICT MISS: Replaces Tag 0x003</text>
+
+    <!-- Key Takeaway Note -->
+    <rect x="15" y="228" width="800" height="32" rx="4" fill="#F8FAFC" stroke="#E2E8F0" />
+    <text x="415" y="248" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="600" fill="#334155">
+      Key Architecture Insight: 0x0034 and 0x0044 alias to Index 2'b01 (Line 1). Differing tags force direct-mapped replacement.
+    </text>
+  </g>
+</svg>
