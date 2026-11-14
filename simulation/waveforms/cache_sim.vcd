@@ -1,0 +1,811 @@
+$date
+   Sat Nov 14 14:15:00 2026
+$end
+$version
+   Python Cycle-Accurate Verilog VCD Generator v1.0
+$end
+$timescale
+   1ns
+$end
+$scope module cache_tb $end
+$var wire 1 clk clk $end
+$var wire 1 rst_n rst_n $end
+$var wire 1 cpu_req cpu_req $end
+$var wire 1 cpu_rw cpu_rw $end
+$var reg 16 cpu_addr cpu_addr $end
+$var reg 8 cpu_wdata cpu_wdata $end
+$var reg 8 cpu_rdata cpu_rdata $end
+$var wire 1 cpu_ready cpu_ready $end
+$var wire 1 cpu_hit cpu_hit $end
+$var reg 3 fsm_state fsm_state $end
+$var wire 1 mem_req mem_req $end
+$var wire 1 mem_rw mem_rw $end
+$var reg 16 mem_addr mem_addr $end
+$var reg 8 mem_wdata mem_wdata $end
+$var reg 32 mem_rdata_block mem_rdata_block $end
+$var wire 1 mem_ready mem_ready $end
+$upscope $end
+$enddefinitions $end
+$dumpvars
+$end
+0clk
+#5
+1clk
+0rst_n
+0cpu_req
+0cpu_rw
+b0000000000000000 cpu_addr
+b00000000 cpu_wdata
+b00000000 cpu_rdata
+0cpu_ready
+0cpu_hit
+b000 fsm_state
+0mem_req
+0mem_rw
+b0000000000000000 mem_addr
+b00000000 mem_wdata
+b00000000000000000000000000000000 mem_rdata_block
+0mem_ready
+#10
+0clk
+#15
+1clk
+#20
+0clk
+#25
+1clk
+#30
+0clk
+#35
+1clk
+1rst_n
+#40
+0clk
+#45
+1clk
+#50
+0clk
+#55
+1clk
+1cpu_req
+b0000000000110100 cpu_addr
+#60
+0clk
+#65
+1clk
+b001 fsm_state
+#70
+0clk
+#75
+1clk
+b010 fsm_state
+#80
+0clk
+#85
+1clk
+1mem_req
+b0000000000110100 mem_addr
+#90
+0clk
+#95
+1clk
+#100
+0clk
+#105
+1clk
+#110
+0clk
+#115
+1clk
+b011 fsm_state
+b10100011101000101010000110100000 mem_rdata_block
+1mem_ready
+#120
+0clk
+#125
+1clk
+b101 fsm_state
+0mem_req
+b0000000000000000 mem_addr
+0mem_ready
+#130
+0clk
+#135
+1clk
+0cpu_req
+b10100000 cpu_rdata
+1cpu_ready
+b000 fsm_state
+#140
+0clk
+#145
+1clk
+1cpu_req
+b0000000000110101 cpu_addr
+0cpu_ready
+b00000011000000100000000100000000 mem_rdata_block
+1mem_ready
+#150
+0clk
+#155
+1clk
+b001 fsm_state
+0mem_ready
+#160
+0clk
+#165
+1clk
+b101 fsm_state
+#170
+0clk
+#175
+1clk
+0cpu_req
+b10100001 cpu_rdata
+1cpu_ready
+1cpu_hit
+b000 fsm_state
+#180
+0clk
+#185
+1clk
+1cpu_req
+b0000000000110100 cpu_addr
+0cpu_ready
+#190
+0clk
+#195
+1clk
+b001 fsm_state
+#200
+0clk
+#205
+1clk
+b101 fsm_state
+#210
+0clk
+#215
+1clk
+0cpu_req
+b10100000 cpu_rdata
+1cpu_ready
+b000 fsm_state
+#220
+0clk
+#225
+1clk
+1cpu_req
+1cpu_rw
+b0000000000110101 cpu_addr
+b01010101 cpu_wdata
+0cpu_ready
+#230
+0clk
+#235
+1clk
+b001 fsm_state
+#240
+0clk
+#245
+1clk
+b100 fsm_state
+b01010101 mem_wdata
+#250
+0clk
+#255
+1clk
+1mem_req
+1mem_rw
+b0000000000110101 mem_addr
+#260
+0clk
+#265
+1clk
+#270
+0clk
+#275
+1clk
+#280
+0clk
+#285
+1clk
+b101 fsm_state
+1mem_ready
+#290
+0clk
+#295
+1clk
+0cpu_req
+1cpu_ready
+b000 fsm_state
+0mem_req
+0mem_rw
+b0000000000000000 mem_addr
+0mem_ready
+#300
+0clk
+#305
+1clk
+1cpu_req
+0cpu_rw
+b00000000 cpu_wdata
+0cpu_ready
+#310
+0clk
+#315
+1clk
+b001 fsm_state
+1mem_ready
+#320
+0clk
+#325
+1clk
+b101 fsm_state
+b00000000 mem_wdata
+0mem_ready
+#330
+0clk
+#335
+1clk
+0cpu_req
+b01010101 cpu_rdata
+1cpu_ready
+b000 fsm_state
+#340
+0clk
+#345
+1clk
+1cpu_req
+1cpu_rw
+b0000000000101000 cpu_addr
+b01110111 cpu_wdata
+0cpu_ready
+#350
+0clk
+#355
+1clk
+b001 fsm_state
+#360
+0clk
+#365
+1clk
+b010 fsm_state
+b01110111 mem_wdata
+#370
+0clk
+#375
+1clk
+0cpu_hit
+1mem_req
+b0000000000101000 mem_addr
+#380
+0clk
+#385
+1clk
+#390
+0clk
+#395
+1clk
+#400
+0clk
+#405
+1clk
+b011 fsm_state
+b00101011001010100010100100101000 mem_rdata_block
+1mem_ready
+#410
+0clk
+#415
+1clk
+b100 fsm_state
+0mem_req
+b0000000000000000 mem_addr
+0mem_ready
+#420
+0clk
+#425
+1clk
+1mem_req
+1mem_rw
+b0000000000101000 mem_addr
+#430
+0clk
+#435
+1clk
+b101 fsm_state
+1mem_ready
+#440
+0clk
+#445
+1clk
+0cpu_req
+1cpu_ready
+b000 fsm_state
+0mem_req
+0mem_rw
+b0000000000000000 mem_addr
+0mem_ready
+#450
+0clk
+#455
+1clk
+1cpu_req
+0cpu_rw
+b00000000 cpu_wdata
+0cpu_ready
+#460
+0clk
+#465
+1clk
+b001 fsm_state
+b00000011000000100000000100000000 mem_rdata_block
+1mem_ready
+#470
+0clk
+#475
+1clk
+b101 fsm_state
+b00000000 mem_wdata
+0mem_ready
+#480
+0clk
+#485
+1clk
+0cpu_req
+b01110111 cpu_rdata
+1cpu_ready
+1cpu_hit
+b000 fsm_state
+#490
+0clk
+#495
+1clk
+1cpu_req
+b0000000000101001 cpu_addr
+0cpu_ready
+#500
+0clk
+#505
+1clk
+b001 fsm_state
+#510
+0clk
+#515
+1clk
+b101 fsm_state
+#520
+0clk
+#525
+1clk
+0cpu_req
+b00101001 cpu_rdata
+1cpu_ready
+b000 fsm_state
+#530
+0clk
+#535
+1clk
+1cpu_req
+b0000000001000100 cpu_addr
+0cpu_ready
+#540
+0clk
+#545
+1clk
+b001 fsm_state
+#550
+0clk
+#555
+1clk
+b010 fsm_state
+#560
+0clk
+#565
+1clk
+0cpu_hit
+1mem_req
+b0000000001000100 mem_addr
+#570
+0clk
+#575
+1clk
+#580
+0clk
+#585
+1clk
+#590
+0clk
+#595
+1clk
+b011 fsm_state
+b11000011110000101100000111000000 mem_rdata_block
+1mem_ready
+#600
+0clk
+#605
+1clk
+b101 fsm_state
+0mem_req
+b0000000000000000 mem_addr
+0mem_ready
+#610
+0clk
+#615
+1clk
+0cpu_req
+b11000000 cpu_rdata
+1cpu_ready
+b000 fsm_state
+#620
+0clk
+#625
+1clk
+1cpu_req
+b0000000000110100 cpu_addr
+0cpu_ready
+b00000011000000100000000100000000 mem_rdata_block
+1mem_ready
+#630
+0clk
+#635
+1clk
+b001 fsm_state
+0mem_ready
+#640
+0clk
+#645
+1clk
+b010 fsm_state
+#650
+0clk
+#655
+1clk
+1mem_req
+b0000000000110100 mem_addr
+#660
+0clk
+#665
+1clk
+#670
+0clk
+#675
+1clk
+#680
+0clk
+#685
+1clk
+b011 fsm_state
+b10100011101000100101010110100000 mem_rdata_block
+1mem_ready
+#690
+0clk
+#695
+1clk
+b101 fsm_state
+0mem_req
+b0000000000000000 mem_addr
+0mem_ready
+#700
+0clk
+#705
+1clk
+0cpu_req
+b10100000 cpu_rdata
+1cpu_ready
+b000 fsm_state
+#710
+0clk
+#715
+1clk
+1cpu_req
+b0000000000110101 cpu_addr
+0cpu_ready
+b00000011000000100000000100000000 mem_rdata_block
+1mem_ready
+#720
+0clk
+#725
+1clk
+b001 fsm_state
+0mem_ready
+#730
+0clk
+#735
+1clk
+b101 fsm_state
+#740
+0clk
+#745
+1clk
+0cpu_req
+b01010101 cpu_rdata
+1cpu_ready
+1cpu_hit
+b000 fsm_state
+#750
+0clk
+#755
+1clk
+1cpu_req
+b0000000000110110 cpu_addr
+0cpu_ready
+#760
+0clk
+#765
+1clk
+b001 fsm_state
+#770
+0clk
+#775
+1clk
+b101 fsm_state
+#780
+0clk
+#785
+1clk
+0cpu_req
+b10100010 cpu_rdata
+1cpu_ready
+b000 fsm_state
+#790
+0clk
+#795
+1clk
+1cpu_req
+b0000000000110111 cpu_addr
+0cpu_ready
+#800
+0clk
+#805
+1clk
+b001 fsm_state
+#810
+0clk
+#815
+1clk
+b101 fsm_state
+#820
+0clk
+#825
+1clk
+0cpu_req
+b10100011 cpu_rdata
+1cpu_ready
+b000 fsm_state
+#830
+0clk
+#835
+1clk
+1cpu_req
+b0000000000010000 cpu_addr
+0cpu_ready
+#840
+0clk
+#845
+1clk
+b001 fsm_state
+#850
+0clk
+#855
+1clk
+b010 fsm_state
+#860
+0clk
+#865
+1clk
+0cpu_hit
+1mem_req
+b0000000000010000 mem_addr
+#870
+0clk
+#875
+1clk
+#880
+0clk
+#885
+1clk
+#890
+0clk
+#895
+1clk
+b011 fsm_state
+b00010011000100100001000100010000 mem_rdata_block
+1mem_ready
+#900
+0clk
+#905
+1clk
+b101 fsm_state
+0mem_req
+b0000000000000000 mem_addr
+0mem_ready
+#910
+0clk
+#915
+1clk
+0cpu_req
+b00010000 cpu_rdata
+1cpu_ready
+b000 fsm_state
+#920
+0clk
+#925
+1clk
+1cpu_req
+b0000000000111100 cpu_addr
+0cpu_ready
+b00000011000000100000000100000000 mem_rdata_block
+1mem_ready
+#930
+0clk
+#935
+1clk
+b001 fsm_state
+0mem_ready
+#940
+0clk
+#945
+1clk
+b010 fsm_state
+#950
+0clk
+#955
+1clk
+1mem_req
+b0000000000111100 mem_addr
+#960
+0clk
+#965
+1clk
+#970
+0clk
+#975
+1clk
+#980
+0clk
+#985
+1clk
+b011 fsm_state
+b00111111001111100011110100111100 mem_rdata_block
+1mem_ready
+#990
+0clk
+#995
+1clk
+b101 fsm_state
+0mem_req
+b0000000000000000 mem_addr
+0mem_ready
+#1000
+0clk
+#1005
+1clk
+0cpu_req
+b00111100 cpu_rdata
+1cpu_ready
+b000 fsm_state
+#1010
+0clk
+#1015
+1clk
+1cpu_req
+b0000000000010000 cpu_addr
+0cpu_ready
+b00000011000000100000000100000000 mem_rdata_block
+1mem_ready
+#1020
+0clk
+#1025
+1clk
+b001 fsm_state
+0mem_ready
+#1030
+0clk
+#1035
+1clk
+b101 fsm_state
+#1040
+0clk
+#1045
+1clk
+0cpu_req
+b00010000 cpu_rdata
+1cpu_ready
+1cpu_hit
+b000 fsm_state
+#1050
+0clk
+#1055
+1clk
+1cpu_req
+b0000000000110100 cpu_addr
+0cpu_ready
+#1060
+0clk
+#1065
+1clk
+b001 fsm_state
+#1070
+0clk
+#1075
+1clk
+b101 fsm_state
+#1080
+0clk
+#1085
+1clk
+0cpu_req
+b10100000 cpu_rdata
+1cpu_ready
+b000 fsm_state
+#1090
+0clk
+#1095
+1clk
+1cpu_req
+b0000000000101000 cpu_addr
+0cpu_ready
+#1100
+0clk
+#1105
+1clk
+b001 fsm_state
+#1110
+0clk
+#1115
+1clk
+b101 fsm_state
+#1120
+0clk
+#1125
+1clk
+0cpu_req
+b01110111 cpu_rdata
+1cpu_ready
+b000 fsm_state
+#1130
+0clk
+#1135
+1clk
+1cpu_req
+b0000000000111100 cpu_addr
+0cpu_ready
+#1140
+0clk
+#1145
+1clk
+b001 fsm_state
+#1150
+0clk
+#1155
+1clk
+b101 fsm_state
+#1160
+0clk
+#1165
+1clk
+0cpu_req
+b00111100 cpu_rdata
+1cpu_ready
+b000 fsm_state
+#1170
+0clk
+#1175
+1clk
+0cpu_ready
+#1180
+0clk
+#1185
+1clk
+#1190
+0clk
+#1195
+1clk
+#1200
+0clk
+#1205
+1clk
+#1210
+0clk
+#1215
+1clk
