@@ -10,6 +10,10 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
+if [ -d "/Library/TeX/texbin" ]; then
+    export PATH="/Library/TeX/texbin:$PATH"
+fi
+
 if ! command -v pdflatex &> /dev/null; then
     echo "[INFO] 'pdflatex' not found in PATH."
     echo "To compile via TeX on macOS, install MacTeX or BasicTeX:"

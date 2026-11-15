@@ -8,6 +8,7 @@ Description: Generates an authentic, beautifully-formatted IEEE Conference Phase
 
 import sys
 import os
+import shutil
 
 def create_pdf(filename):
     # PDF generation helper
@@ -39,7 +40,8 @@ def create_pdf(filename):
     def text(arr, x, y, font, size, txt):
         # Escape parenthesis
         safe = txt.replace('\\', '\\\\').replace('(', '\\(').replace(')', '\\)')
-        arr.append(f"BT /{font} {size} Tf {x} {y} Td ({safe}) Tj ET\n")
+        # Explicitly enforce 0 g (solid black) so text is never washed out
+        arr.append(f"0 g BT /{font} {size} Tf {x} {y} Td ({safe}) Tj ET\n")
 
     def line(arr, x1, y1, x2, y2, width=0.5):
         arr.append(f"{width} w {x1} {y1} m {x2} {y2} l S\n")
@@ -124,7 +126,7 @@ def create_pdf(filename):
     text(p1, 50, 314, "F2", 9.5, "III. BACKGROUND & WORKING PRINCIPLES")
     text(p1, 50, 301, "F2", 8.5, "A. 16-Bit Memory Address Decomposition")
     text(p1, 50, 289, "F1", 8, "The 16-bit CPU physical memory address A[15:0] is partitioned as:")
-    text(p1, 55, 276, "F4", 8, "A[15:0] = Tag[15:4] (12b) + Index[3:2] (2b) + Offset[1:0] (2b)")
+    text(p1, 52, 276, "F4", 7.5, "A[15:0] = Tag[15:4] + Index[3:2] + Offset[1:0]")
     text(p1, 50, 263, "F1", 8, "1) Offset [1:0]: Selects 1 of 4 bytes inside the cache line.")
     text(p1, 50, 252, "F1", 8, "2) Index [3:2]: Directly addresses 1 of the 4 cache lines.")
     text(p1, 50, 241, "F1", 8, "3) Tag [15:4]: Stored in tag SRAM and checked for hit validation.")
@@ -182,7 +184,7 @@ def create_pdf(filename):
     text(p1, 315, 256, "F2", 8, "- Member 2 [D. Hemamdhar N. (2401010137)]:")
     text(p1, 315, 245, "F1", 8, "  Verification testbench (tb), simulation engine, & VCD dump.")
     text(p1, 315, 233, "F2", 8, "- Member 3 [Akshay Y. (2401020008)]:")
-    text(p1, 315, 222, "F1", 8, "  Main memory model, top-level integration, IEEE report, & viva.")
+    text(p1, 315, 222, "F1", 8, "  Main memory model, top-level integration, & IEEE report.")
 
     # Section VII: Results teaser
     text(p1, 315, 203, "F2", 9.5, "VII. EXPERIMENTAL VERIFICATION")
@@ -403,4 +405,26 @@ if __name__ == "__main__":
     target = "docs/IEEE_Report/IEEE_report.pdf"
     if len(sys.argv) > 1:
         target = sys.argv[1]
+
+    # Check for pdflatex on macOS / Linux
+    pdflatex_bin = None
+    if os.path.exists("/Library/TeX/texbin/pdflatex"):
+        pdflatex_bin = "/Library/TeX/texbin/pdflatex"
+    elif shutil.which("pdflatex"):
+        pdflatex_bin = shutil.which("pdflatex")
+
+    if pdflatex_bin and os.path.exists("docs/IEEE_Report/main.tex"):
+        print("[INFO] Found system pdflatex. Compiling official IEEEtran publication PDF...")
+        import subprocess
+        tex_dir = os.path.abspath("docs/IEEE_Report")
+        env = os.environ.copy()
+        env["PATH"] = f"/Library/TeX/texbin:{env.get('PATH', '')}"
+        res = subprocess.run(["./compile_report.sh"], cwd=tex_dir, env=env, capture_output=True, text=True)
+        if res.returncode == 0 and os.path.exists("docs/IEEE_Report/IEEE_report.pdf"):
+            print(f"[SUCCESS] Official IEEEtran Report PDF compiled at: {target}")
+            sys.exit(0)
+        else:
+            print("[WARN] pdflatex compilation encountered an issue, falling back to standalone generator...")
+            print(res.stderr)
+
     create_pdf(target)

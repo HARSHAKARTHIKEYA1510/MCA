@@ -78,7 +78,7 @@ The specifications for the proposed direct-mapped cache controller are summarize
 \caption{Hardware Architectural Specifications}
 \label{tab:specs}
 \centering
-\begin{tabular}{ll}
+\begin{tabularx}{\columnwidth}{lX}
 \toprule
 \textbf{Parameter} & \textbf{Hardware Specification} \\
 \midrule
@@ -92,11 +92,11 @@ Tag Field Width & 12 bits ($Tag[11:0] = A[15:4]$) \\
 Index Field Width & 2 bits ($Index[1:0] = A[3:2]$) \\
 Offset Field Width & 2 bits ($Offset[1:0] = A[1:0]$) \\
 Status Bits per Line & 1 Valid bit, 0 Dirty bits \\
-Write Policy & Write-Through (Immediate memory update) \\
+Write Policy & Write-Through (Immediate sync) \\
 Write Allocation Policy & Write-Allocate (Fetch on write miss) \\
-Target HDL Standard & Verilog-2001 (IEEE Std 1364-2001) \\
+Target HDL Standard & Verilog-2001 (IEEE 1364-2001) \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsection{Address Decomposition}
@@ -140,7 +140,7 @@ The cache controller transitions across six deterministic states:
     \item \textbf{\texttt{S\_IDLE} (\texttt{3'b000}):} The controller remains dormant awaiting processor requests (\texttt{cpu\_req == 1'b1}). Upon request arrival, it registers \texttt{cpu\_addr}, \texttt{cpu\_rw}, and \texttt{cpu\_wdata}, advancing to \texttt{S\_LOOKUP}.
     \item \textbf{\texttt{S\_LOOKUP} (\texttt{3'b001}):} The indexed tag and valid bit are evaluated:
     \begin{equation}
-        \text{is\_hit} = (\text{stored\_valid} == 1'b1) \land (\text{stored\_tag} == \text{req\_tag})
+        \text{hit} = \text{valid} \land (\text{stored\_tag} == \text{req\_tag})
     \end{equation}
     If $\text{is\_hit}$ is true:
     \begin{itemize}
@@ -163,7 +163,7 @@ Group Alpha executed this project with responsibilities delineated as follows:
     \item \textbf{Member 2: Dakarapu Hemamdhar nath (Roll No: 2401010137) --- Hardware Verification \& Simulation:}
     Engineered the self-checking automated verification testbench (\texttt{testbench/cache\_tb.v}) covering all twelve functional scenarios. Implemented the cycle-accurate verification engine and VCD waveform generator (\texttt{scripts/simulate\_cache.py}), achieving 100\% assertion coverage.
     \item \textbf{Member 3: Akshay Y (Roll No: 2401020008) --- Memory Subsystem, System Integration \& Documentation:}
-    Designed, modeled, and verified the 64~KB secondary memory subsystem (\texttt{main\_memory.v}) with 4-byte burst read packaging, boundary alignment masking, single-byte write-through synchronization, and parameterized 2-cycle latency. Engineered the top-level structural integration (\texttt{direct\_mapped\_cache.v}), unified reset trees, and bus request-acknowledge handshaking. Authored the comprehensive IEEE Phase~I technical report, architectural timing diagrams (\texttt{memory\_interface\_timing.svg}), standalone memory verification suite (\texttt{verify\_memory\_subsystem.py}), 5-minute video demonstration script, and Phase~II technical defense guide.
+    Designed, modeled, and verified the 64~KB secondary memory subsystem (\texttt{main\_memory.v}) with 4-byte burst read packaging, boundary alignment masking, single-byte write-through synchronization, and parameterized 2-cycle latency. Engineered the top-level structural integration (\texttt{direct\_mapped\_cache.v}), unified reset trees, and bus request-acknowledge handshaking. Authored the comprehensive IEEE Phase~I technical report, architectural timing diagrams (\texttt{memory\_interface\_timing.svg}), standalone memory verification suite (\texttt{verify\_memory\_subsystem.py}), 5-minute video demonstration script, and system documentation.
 \end{itemize}
 
 \section{Preliminary Results and Discussion}
@@ -175,9 +175,9 @@ The testbench exercised twenty individual assertions across twelve benchmark sce
 \caption{Simulation Verification Results Across 12 Scenarios}
 \label{tab:results}
 \centering
-\begin{tabularx}{\columnwidth}{clcccc}
+\begin{tabularx}{\columnwidth}{c X c c c c}
 \toprule
-\textbf{Test} & \textbf{Scenario Description} & \textbf{Address} & \textbf{Op} & \textbf{Hit} & \textbf{Status} \\
+\textbf{\#} & \textbf{Scenario Description} & \textbf{Addr} & \textbf{Op} & \textbf{Hit} & \textbf{Status} \\
 \midrule
 01 & Initial Cold Miss & \texttt{0x0034} & Read  & 0 & \textbf{PASS} \\
 02 & Spatial Locality Hit & \texttt{0x0035} & Read  & 1 & \textbf{PASS} \\
@@ -203,7 +203,7 @@ The testbench exercised twenty individual assertions across twelve benchmark sce
 \end{tabularx}
 \end{table}
 
-\subsection{Conflict Miss & Line Replacement Analysis}
+\subsection{Conflict Miss \& Line Replacement Analysis}
 A pivotal architectural characteristic of direct-mapped caches is vulnerability to conflict misses when two active memory addresses map to the identical index. This was demonstrated using addresses \texttt{0x0034} and \texttt{0x0044}:
 \begin{itemize}
     \item \texttt{0x0034}: Binary \texttt{0000 0000 0011 0100} $\rightarrow$ Tag = \texttt{12'h003}, Index = \texttt{2'b01} (Line 1), Offset = \texttt{2'b00}.
