@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="100%" height="100%">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F8FAFC" />
+    </linearGradient>
+    <filter id="shadow" x="-3%" y="-5%" width="106%" height="112%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-opacity="0.12" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#F1F5F9" />
+
+  <!-- Title Header -->
+  <text x="480" y="32" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#0F172A">
+    Main Memory Subsystem Bus Interface &amp; Handshake Timing
+  </text>
+  <text x="480" y="52" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#64748B">
+    Cycle-Accurate Latency Protocol (LATENCY_CYCLES = 2) for Burst Read Refills &amp; Write-Through Transactions
+  </text>
+
+  <!-- Left Card: 4-Byte Block Burst Read Timing -->
+  <g transform="translate(30, 75)" filter="url(#shadow)">
+    <rect width="435" height="415" rx="10" fill="url(#cardGrad)" stroke="#0284C7" stroke-width="1.5" />
+    <rect width="435" height="38" rx="10" fill="#0284C7" />
+    <rect y="28" width="435" height="10" fill="#0284C7" />
+    <text x="217" y="24" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">
+      A. 4-BYTE BURST READ TIMING (mem_rw = 0)
+    </text>
+
+    <!-- Cycle Grid Lines -->
+    <g stroke="#E2E8F0" stroke-dasharray="3,3">
+      <line x1="100" y1="50" x2="100" y2="340" />
+      <line x1="165" y1="50" x2="165" y2="340" />
+      <line x1="230" y1="50" x2="230" y2="340" />
+      <line x1="295" y1="50" x2="295" y2="340" />
+      <line x1="360" y1="50" x2="360" y2="340" />
+    </g>
+
+    <!-- Cycle Labels -->
+    <text x="132" y="62" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748B">T0 (Req)</text>
+    <text x="197" y="62" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748B">T1 (Wait)</text>
+    <text x="262" y="62" text-anchor="middle" font-family="monospace" font-size="10" fill="#0369A1" font-weight="700">T2 (Ready)</text>
+    <text x="327" y="62" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748B">T3 (Done)</text>
+
+    <!-- Signal Names -->
+    <text x="15" y="92" font-family="monospace" font-size="10.5" font-weight="700" fill="#1E293B">clk</text>
+    <text x="15" y="132" font-family="monospace" font-size="10.5" font-weight="700" fill="#0284C7">mem_req</text>
+    <text x="15" y="172" font-family="monospace" font-size="10.5" font-weight="700" fill="#475569">mem_rw</text>
+    <text x="15" y="212" font-family="monospace" font-size="10.5" font-weight="700" fill="#0369A1">mem_addr</text>
+    <text x="15" y="252" font-family="monospace" font-size="10.5" font-weight="700" fill="#0D9488">busy</text>
+    <text x="15" y="292" font-family="monospace" font-size="10.5" font-weight="700" fill="#16A34A">mem_ready</text>
+    <text x="15" y="332" font-family="monospace" font-size="10.5" font-weight="700" fill="#9333EA">rdata_blk</text>
+
+    <!-- Waveforms: clk -->
+    <path d="M 100 95 L 132 95 L 132 75 L 165 75 L 165 95 L 197 95 L 197 75 L 230 75 L 230 95 L 262 95 L 262 75 L 295 75 L 295 95 L 327 95 L 327 75 L 360 75" fill="none" stroke="#1E293B" stroke-width="1.5" />
+
+    <!-- Waveforms: mem_req -->
+    <path d="M 100 135 L 132 135 L 132 118 L 295 118 L 295 135 L 360 135" fill="none" stroke="#0284C7" stroke-width="2" />
+
+    <!-- Waveforms: mem_rw (0 for read) -->
+    <path d="M 100 175 L 360 175" fill="none" stroke="#475569" stroke-width="2" />
+    <text x="230" y="171" text-anchor="middle" font-family="monospace" font-size="9" fill="#475569">0 (Read Block)</text>
+
+    <!-- Waveforms: mem_addr (0x0034) -->
+    <rect x="132" y="198" width="163" height="18" rx="3" fill="#E0F2FE" stroke="#0284C7" />
+    <text x="213" y="211" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#0369A1">0x0034 (Base Aligned)</text>
+
+    <!-- Waveforms: busy -->
+    <path d="M 100 255 L 165 255 L 165 238 L 295 238 L 295 255 L 360 255" fill="none" stroke="#0D9488" stroke-width="2" />
+
+    <!-- Waveforms: mem_ready (Single-Cycle Pulse at T2) -->
+    <path d="M 100 295 L 230 295 L 230 278 L 295 278 L 295 295 L 360 295" fill="none" stroke="#16A34A" stroke-width="2.5" />
+
+    <!-- Waveforms: mem_rdata_block -->
+    <rect x="230" y="318" width="130" height="18" rx="3" fill="#F3E8FF" stroke="#9333EA" />
+    <text x="295" y="331" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#6B21A8">0xA3A2A1A0 (32-bit)</text>
+
+    <!-- Summary Box -->
+    <rect x="15" y="350" width="405" height="52" rx="6" fill="#F0F9FF" stroke="#BAE6FD" />
+    <text x="25" y="368" font-family="sans-serif" font-size="10.5" font-weight="700" fill="#0369A1">
+      • Latency: 2 Wait Cycles (T0-T2) before mem_ready assertion.
+    </text>
+    <text x="25" y="388" font-family="sans-serif" font-size="10.5" fill="#334155">
+      • Data Output: 4 contiguous bytes {B3, B2, B1, B0} loaded to Cache SRAM.
+    </text>
+  </g>
+
+  <!-- Right Card: Single-Byte Write-Through Timing -->
+  <g transform="translate(495, 75)" filter="url(#shadow)">
+    <rect width="435" height="415" rx="10" fill="url(#cardGrad)" stroke="#7C3AED" stroke-width="1.5" />
+    <rect width="435" height="38" rx="10" fill="#7C3AED" />
+    <rect y="28" width="435" height="10" fill="#7C3AED" />
+    <text x="217" y="24" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">
+      B. SINGLE-BYTE WRITE-THROUGH TIMING (mem_rw = 1)
+    </text>
+
+    <!-- Cycle Grid Lines -->
+    <g stroke="#E2E8F0" stroke-dasharray="3,3">
+      <line x1="100" y1="50" x2="100" y2="340" />
+      <line x1="165" y1="50" x2="165" y2="340" />
+      <line x1="230" y1="50" x2="230" y2="340" />
+      <line x1="295" y1="50" x2="295" y2="340" />
+      <line x1="360" y1="50" x2="360" y2="340" />
+    </g>
+
+    <!-- Cycle Labels -->
+    <text x="132" y="62" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748B">T0 (Req)</text>
+    <text x="197" y="62" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748B">T1 (Wait)</text>
+    <text x="262" y="62" text-anchor="middle" font-family="monospace" font-size="10" fill="#6D28D9" font-weight="700">T2 (Ready)</text>
+    <text x="327" y="62" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748B">T3 (Done)</text>
+
+    <!-- Signal Names -->
+    <text x="15" y="92" font-family="monospace" font-size="10.5" font-weight="700" fill="#1E293B">clk</text>
+    <text x="15" y="132" font-family="monospace" font-size="10.5" font-weight="700" fill="#7C3AED">mem_req</text>
+    <text x="15" y="172" font-family="monospace" font-size="10.5" font-weight="700" fill="#D97706">mem_rw</text>
+    <text x="15" y="212" font-family="monospace" font-size="10.5" font-weight="700" fill="#4338CA">mem_addr</text>
+    <text x="15" y="252" font-family="monospace" font-size="10.5" font-weight="700" fill="#C026D3">mem_wdata</text>
+    <text x="15" y="292" font-family="monospace" font-size="10.5" font-weight="700" fill="#16A34A">mem_ready</text>
+    <text x="15" y="332" font-family="monospace" font-size="10.5" font-weight="700" fill="#047857">mem_array</text>
+
+    <!-- Waveforms: clk -->
+    <path d="M 100 95 L 132 95 L 132 75 L 165 75 L 165 95 L 197 95 L 197 75 L 230 75 L 230 95 L 262 95 L 262 75 L 295 75 L 295 95 L 327 95 L 327 75 L 360 75" fill="none" stroke="#1E293B" stroke-width="1.5" />
+
+    <!-- Waveforms: mem_req -->
+    <path d="M 100 135 L 132 135 L 132 118 L 295 118 L 295 135 L 360 135" fill="none" stroke="#7C3AED" stroke-width="2" />
+
+    <!-- Waveforms: mem_rw (1 for write) -->
+    <path d="M 100 175 L 132 175 L 132 158 L 295 158 L 295 175 L 360 175" fill="none" stroke="#D97706" stroke-width="2" />
+    <text x="213" y="154" text-anchor="middle" font-family="monospace" font-size="9" fill="#B45309">1 (Write Single Byte)</text>
+
+    <!-- Waveforms: mem_addr (0x0035) -->
+    <rect x="132" y="198" width="163" height="18" rx="3" fill="#EEF2FF" stroke="#4338CA" />
+    <text x="213" y="211" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#3730A3">0x0035 (Target Byte)</text>
+
+    <!-- Waveforms: mem_wdata (0x55) -->
+    <rect x="132" y="238" width="163" height="18" rx="3" fill="#FDF4FF" stroke="#C026D3" />
+    <text x="213" y="251" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#86198F">0x55 (Write Byte)</text>
+
+    <!-- Waveforms: mem_ready (Single-Cycle Pulse at T2) -->
+    <path d="M 100 295 L 230 295 L 230 278 L 295 278 L 295 295 L 360 295" fill="none" stroke="#16A34A" stroke-width="2.5" />
+
+    <!-- Waveforms: mem_array committed -->
+    <rect x="230" y="318" width="130" height="18" rx="3" fill="#ECFDF5" stroke="#047857" />
+    <text x="295" y="331" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#065F46">Committed (0x55)</text>
+
+    <!-- Summary Box -->
+    <rect x="15" y="350" width="405" height="52" rx="6" fill="#FAF5FF" stroke="#E9D5FF" />
+    <text x="25" y="368" font-family="sans-serif" font-size="10.5" font-weight="700" fill="#6D28D9">
+      • Coherence: Main memory updated concurrently with cache line.
+    </text>
+    <text x="25" y="388" font-family="sans-serif" font-size="10.5" fill="#334155">
+      • Deterministic: Clean 1-cycle acknowledge prevents processor deadlocks.
+    </text>
+  </g>
+</svg>

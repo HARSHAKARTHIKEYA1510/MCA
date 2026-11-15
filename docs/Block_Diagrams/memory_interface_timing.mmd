@@ -1,0 +1,26 @@
+sequenceDiagram
+    autonumber
+    participant CPU as CPU Host Core
+    participant CTRL as Cache Controller (FSM)
+    participant MEM as Main Memory Subsystem
+
+    Note over CPU,MEM: Scenario 1: Cache Read Miss & 4-Byte Burst Refill (mem_rw = 0)
+    CPU->>CTRL: Assert cpu_req=1, cpu_rw=0, cpu_addr=0x0034
+    CTRL->>CTRL: S_LOOKUP evaluates Tag -> MISS (stored_valid=0)
+    CTRL->>MEM: Assert mem_req=1, mem_rw=0, mem_addr=0x0034 (S_READ_MISS)
+    Note over MEM: Cycle 1: Memory latches request, busy=1, latency_counter=1
+    Note over MEM: Cycle 2: Wait state, latency_counter=2
+    Note over MEM: Cycle 3: Latency satisfied, mem_rdata_block = 0xA3A2A1A0
+    MEM-->>CTRL: Pulse mem_ready=1
+    CTRL->>CTRL: S_ALLOCATE writes 4-byte block & Tag into Cache SRAM
+    CTRL->>CPU: S_COMPLETE: Pulse cpu_ready=1, cpu_rdata=0xA0, cpu_hit=0
+
+    Note over CPU,MEM: Scenario 2: Write-Through Transaction (mem_rw = 1)
+    CPU->>CTRL: Assert cpu_req=1, cpu_rw=1, cpu_addr=0x0035, cpu_wdata=0x55
+    CTRL->>CTRL: S_LOOKUP evaluates Tag -> HIT -> updates local cache line
+    CTRL->>MEM: Assert mem_req=1, mem_rw=1, mem_addr=0x0035, mem_wdata=0x55 (S_WRITE_THROUGH)
+    Note over MEM: Cycle 1: Memory latches write, busy=1, latency_counter=1
+    Note over MEM: Cycle 2: Wait state, latency_counter=2
+    Note over MEM: Cycle 3: memory_array[0x0035] <= 0x55 committed
+    MEM-->>CTRL: Pulse mem_ready=1
+    CTRL->>CPU: S_COMPLETE: Pulse cpu_ready=1, cpu_hit=1
