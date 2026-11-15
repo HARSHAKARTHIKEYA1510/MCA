@@ -23,7 +23,7 @@ endobj
    /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> >>
 endobj
 8 0 obj
-<< /Length 8073 >>
+<< /Length 8058 >>
 stream
 BT /F2 15 Tf 65 750 Td (Design and Implementation of a Synthesizable 16-Bit) Tj ET
 BT /F2 15 Tf 95 732 Td (Direct-Mapped Cache Controller Using Verilog HDL) Tj ET
@@ -33,9 +33,9 @@ BT /F3 8 Tf 60 683 Td (student1@college.edu) Tj ET
 BT /F2 9 Tf 235 705 Td (Member 2: [Student 2 Name / Roll No]) Tj ET
 BT /F1 8 Tf 235 694 Td (Verification & Simulation) Tj ET
 BT /F3 8 Tf 235 683 Td (student2@college.edu) Tj ET
-BT /F2 9 Tf 410 705 Td (Member 3: [Student 3 Name / Roll No]) Tj ET
+BT /F2 9 Tf 410 705 Td (Member 3: Akshay Yelakanti) Tj ET
 BT /F1 8 Tf 410 694 Td (Integration & Documentation) Tj ET
-BT /F3 8 Tf 410 683 Td (student3@college.edu) Tj ET
+BT /F3 8 Tf 410 683 Td (yakshay1213@gmail.com) Tj ET
 0.75 w 50 672 m 562 672 l S
 BT /F3 7.5 Tf 50 660 Td (* Academic Notice: Department guidelines describe a 5-member template; registered team strictly consists of 3 members.) Tj ET
 BT /F2 9 Tf 50 642 Td (Abstract-) Tj ET
@@ -119,9 +119,9 @@ BT /F1 8 Tf 315 268 Td (  cache_controller, top-level integration, and 32-bit ar
 BT /F2 8 Tf 315 256 Td (- Member 2 [Student 2]:) Tj ET
 BT /F1 8 Tf 415 256 Td (Verification lead, comprehensive testbench \(tb\),) Tj ET
 BT /F1 8 Tf 315 245 Td (  cycle-accurate verification engine, and VCD generation.) Tj ET
-BT /F2 8 Tf 315 233 Td (- Member 3 [Student 3]:) Tj ET
-BT /F1 8 Tf 415 233 Td (Main memory model, IEEE paper authoring,) Tj ET
-BT /F1 8 Tf 315 222 Td (  block diagrams, video deck, and 30-Q viva preparation guide.) Tj ET
+BT /F2 8 Tf 315 233 Td (- Member 3 [Akshay Y.]:) Tj ET
+BT /F1 8 Tf 415 233 Td (Main memory model, top-level integration,) Tj ET
+BT /F1 8 Tf 315 222 Td (  IEEE report, timing diagrams, and viva defense guide.) Tj ET
 BT /F2 9.5 Tf 315 203 Td (VII. EXPERIMENTAL VERIFICATION) Tj ET
 BT /F1 8 Tf 315 190 Td (All 20 test assertions achieved 100% pass status under cycle-) Tj ET
 BT /F1 8 Tf 315 179 Td (accurate evaluation. Detailed results are detailed on Page 2.) Tj ET
@@ -337,10 +337,10 @@ xref
 0000000350 00000 n 
 0000000418 00000 n 
 0000000577 00000 n 
-0000008702 00000 n 
-0000008862 00000 n 
+0000008687 00000 n 
+0000008847 00000 n 
 trailer
 << /Size 11 /Root 1 0 R >>
 startxref
-20236
+20221
 %%EOF

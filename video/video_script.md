@@ -46,8 +46,8 @@
 - **Member 2 (`[Student 2 Name]`):**  
   *"I am `[Student 2 Name]`, responsible for Hardware Verification, Testbench Development, and Simulation Analysis."*
 
-- **Member 3 (`[Student 3 Name]`):**  
-  *"And I am `[Student 3 Name]`, handling Main Memory Subsystem Integration, System Documentation, and Academic Reporting.  
+- **Member 3 (Akshay Yelakanti):**  
+  *"And I am Akshay Yelakanti, handling Main Memory Subsystem Integration, Bus Handshake Protocols, and Academic Reporting.  
   Please note: while departmental guidelines mention a 5-member template, our registered project group strictly comprises the three of us."*
 
 ---
@@ -114,19 +114,14 @@ python3 scripts/simulate_cache.py
 
 ---
 
-### Phase 6: Summary & Phase II Roadmap (4:30 – 5:00)
-**[Visual: Display Slide showing Verification Summary Table and Phase II Roadmap]**
+### Phase 6: Memory Interface, Integration & Phase II Roadmap (4:15 – 5:00)
+**[Visual: Display `docs/Block_Diagrams/memory_interface_timing.svg` and `system_architecture.svg`]**
 
-- **Member 3 (`[Student 3 Name]`):**  
-  *"In conclusion, our Phase I deliverables are 100% complete:*
-  - *Synthesizable Verilog RTL modules.*
-  - *Comprehensive self-checking testbench with 100% pass rate.*
-  - *Cycle-accurate VCD waveform dump files.*
-  - *Full IEEE Phase I conference report with authentic academic references.*
-  - *GitHub repository with structured documentation.*
-
-  *In Phase II, we will build upon this foundation to implement a **2-Way Set-Associative Cache** with a **Write-Back** policy, dirty-bit tracking, and LRU replacement to combat conflict misses.*
-  *Thank you for your time, and we welcome your questions!"*
+- **Member 3 (Akshay Yelakanti):**  
+  *"As the Integration and Memory Subsystem lead, I modeled our 64 KB secondary memory (`main_memory.v`) with a parameterized 2-cycle access latency to accurately simulate off-chip DRAM wait states.  
+  Notice our timing handshake: on a miss, memory receives the block-aligned address `{mem_addr[15:2], 2'b00}`, counts two latency cycles, and pulses `mem_ready` while returning four packed bytes `{B3, B2, B1, B0}` on a 32-bit bus. On writes, memory commits the byte concurrently with the cache, ensuring 100% memory coherence.  
+  In `direct_mapped_cache.v`, I structurally unified the FSM controller, the 4-line SRAM, and the memory bus into a single synthesizable entity. Our standalone memory suite verified 23 assertions with 100% pass coverage.  
+  In Phase II, we will extend this interface to a 2-way set-associative cache with Write-Back dirty evictions. All RTL, waveforms, and our IEEE paper are live on GitHub. Thank you!"*
 
 ---
 

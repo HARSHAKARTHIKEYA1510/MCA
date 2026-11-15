@@ -72,9 +72,9 @@ def create_pdf(filename):
     text(p1, 235, 694, "F1", 8, "Verification & Simulation")
     text(p1, 235, 683, "F3", 8, "student2@college.edu")
 
-    text(p1, 410, 705, "F2", 9, "Member 3: [Student 3 Name / Roll No]")
+    text(p1, 410, 705, "F2", 9, "Member 3: Akshay Yelakanti")
     text(p1, 410, 694, "F1", 8, "Integration & Documentation")
-    text(p1, 410, 683, "F3", 8, "student3@college.edu")
+    text(p1, 410, 683, "F3", 8, "yakshay1213@gmail.com")
 
     line(p1, 50, 672, 562, 672, 0.75)
 
@@ -180,9 +180,9 @@ def create_pdf(filename):
     text(p1, 315, 256, "F2", 8, "- Member 2 [Student 2]:")
     text(p1, 415, 256, "F1", 8, "Verification lead, comprehensive testbench (tb),")
     text(p1, 315, 245, "F1", 8, "  cycle-accurate verification engine, and VCD generation.")
-    text(p1, 315, 233, "F2", 8, "- Member 3 [Student 3]:")
-    text(p1, 415, 233, "F1", 8, "Main memory model, IEEE paper authoring,")
-    text(p1, 315, 222, "F1", 8, "  block diagrams, video deck, and 30-Q viva preparation guide.")
+    text(p1, 315, 233, "F2", 8, "- Member 3 [Akshay Y.]:")
+    text(p1, 415, 233, "F1", 8, "Main memory model, top-level integration,")
+    text(p1, 315, 222, "F1", 8, "  IEEE report, timing diagrams, and viva defense guide.")
 
     # Section VII: Results teaser
     text(p1, 315, 203, "F2", 9.5, "VII. EXPERIMENTAL VERIFICATION")

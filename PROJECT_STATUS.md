@@ -15,7 +15,7 @@
 > The college project guidelines mention a default group size of **five (5)** members. However, our registered group strictly comprises **three (3)** members:
 > - **Member 1 (`[Student 1 Name / Roll No]`):** Lead Cache Architecture & RTL Design
 > - **Member 2 (`[Student 2 Name / Roll No]`):** Hardware Verification, Testbench & Simulation
-> - **Member 3 (`[Student 3 Name / Roll No]`):** Memory Subsystem Integration, Documentation & IEEE Report
+> - **Member 3 (Akshay Yelakanti):** Memory Subsystem Integration, Documentation & IEEE Report
 >
 > We have **not** fabricated or invented two non-existent team members or artificial contributions. This document explicitly flags this discrepancy for academic and faculty review.
 
@@ -26,8 +26,11 @@
 ### 2.1 Final Completed File Structure
 - `rtl/cache_memory.v`: Complete 4-line, 4-byte/line SRAM with Tag & Valid bit arrays.
 - `rtl/cache_controller.v`: 6-state Moore/Mealy hybrid FSM controller.
-- `rtl/direct_mapped_cache.v`: Synthesizable top-level system module.
-- `rtl/main_memory.v`: 64 KB secondary memory model with 2-cycle latency.
+- `rtl/direct_mapped_cache.v`: Synthesizable top-level system module (Member 3 Integration).
+- `rtl/main_memory.v`: 64 KB secondary memory model with 2-cycle latency (Member 3).
+- `scripts/verify_memory_subsystem.py`: Dedicated Memory Subsystem verification suite (23/23 PASS, Member 3).
+- `docs/member3_contribution.md`: Member 3 Comprehensive Technical Dossier & Viva Guide.
+- `docs/Block_Diagrams/memory_interface_timing.svg`: Memory handshake timing waveform diagram (Member 3).
 - `rtl/archive_32bit_writeback/`: Safeguarded 32-bit preliminary Write-Back exploratory codebase.
 - `testbench/cache_tb.v`: Self-checking Verilog-2001 testbench exercising 12 test vectors.
 - `scripts/simulate_cache.py`: Cycle-accurate verification engine and VCD generator.

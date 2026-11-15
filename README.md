@@ -25,9 +25,9 @@
 
 | Member | Primary Responsibility | Key Deliverables |
 |---|---|---|
-| **Member 1** (`[Student 1 Name / Roll No]`) | **Lead RTL Architecture & Cache Design** | Synthesizable RTL (`cache_memory.v`, `cache_controller.v`, `direct_mapped_cache.v`), address decomposition, 32-bit preliminary archive |
+| **Member 1** (`[Student 1 Name / Roll No]`) | **Lead RTL Architecture & Cache Design** | Synthesizable RTL (`cache_memory.v`, `cache_controller.v`), address decomposition, 32-bit preliminary archive |
 | **Member 2** (`[Student 2 Name / Roll No]`) | **Hardware Verification & Simulation** | Automated testbench (`cache_tb.v`), cycle-accurate verification engine (`simulate_cache.py`), waveform generation (`cache_sim.vcd`), simulation logs |
-| **Member 3** (`[Student 3 Name / Roll No]`) | **Memory Subsystem, Integration & Documentation** | Secondary memory model (`main_memory.v`), IEEE Phase I Conference Report (`main.tex`, `IEEE_report.pdf`), architectural block diagrams, 5-min demonstration video script, 30-Q interview preparation guide |
+| **Member 3** (Akshay Yelakanti) | **Memory Subsystem, Integration & Documentation** | Secondary memory model (`main_memory.v`), top-level structural integration (`direct_mapped_cache.v`), memory verification suite (`verify_memory_subsystem.py`), IEEE Conference Report (`main.tex`, `IEEE_report.pdf`), timing diagrams, 5-min demonstration video script, 30-Q interview preparation guide |
 
 ---
 
@@ -148,12 +148,12 @@ MCA/
 ├── README.md                           # Master Project Documentation & Quickstart
 ├── PROJECT_STATUS.md                   # Real-time project tracking, audit & roadmap
 │
-├── rtl/                                # Synthesizable Verilog RTL (Member 1)
-│   ├── cache_defines.vh                # Global architecture parameters & macros
-│   ├── cache_memory.v                  # 4-Line x 4-Byte SRAM with Tag & Valid arrays
-│   ├── cache_controller.v              # 6-State Master FSM & Handshake Coordinator
-│   ├── direct_mapped_cache.v           # Top-Level Cache Subsystem Module
-│   ├── main_memory.v                   # 64 KB Secondary Memory with Latency Emulation
+├── rtl/                                # Synthesizable Verilog RTL (Members 1 & 3)
+│   ├── cache_defines.vh                # Global architecture parameters & macros (Member 1)
+│   ├── cache_memory.v                  # 4-Line x 4-Byte SRAM with Tag & Valid arrays (Member 1)
+│   ├── cache_controller.v              # 6-State Master FSM & Handshake Coordinator (Member 1)
+│   ├── direct_mapped_cache.v           # Top-Level Structural Integration Subsystem (Member 3)
+│   ├── main_memory.v                   # 64 KB Secondary Memory with Latency Emulation (Member 3)
 │   └── archive_32bit_writeback/        # Safeguarded 32-bit Write-Back exploratory assets
 │
 ├── testbench/                          # Verification Testbenches (Member 2)
@@ -161,8 +161,9 @@ MCA/
 │
 ├── scripts/                            # Automation & Simulation Tooling
 │   ├── run_sim.sh                      # One-click Icarus Verilog compilation & test script
-│   ├── simulate_cache.py               # Cycle-accurate verification engine & VCD dumper
-│   └── generate_ieee_pdf.py            # Academic IEEE Report PDF generator
+│   ├── simulate_cache.py               # Cycle-accurate verification engine & VCD dumper (Member 2)
+│   ├── verify_memory_subsystem.py      # Dedicated Memory Subsystem verification suite (Member 3)
+│   └── generate_ieee_pdf.py            # Academic IEEE Report PDF generator (Member 3)
 │
 ├── simulation/                         # Verified Simulation Evidence (Member 2)
 │   ├── logs/
@@ -173,6 +174,8 @@ MCA/
 │       └── test_summary.md             # Markdown verification matrix table
 │
 ├── docs/                               # Academic & Architectural Documentation (Member 3)
+│   ├── member3_contribution.md         # Member 3 Comprehensive Technical Dossier & Viva Guide
+│   ├── member1_contribution.md         # Member 1 Contribution Document
 │   ├── IEEE_Report/
 │   │   ├── main.tex                    # LaTeX source of Phase I IEEE conference report
 │   │   ├── references.bib              # Authentic, verified literature bibliography
@@ -182,6 +185,8 @@ MCA/
 │   │   └── architecture_spec.md        # Detailed hardware specification document
 │   ├── Block_Diagrams/
 │   │   ├── system_architecture.svg     # Top-level block interconnect diagram
+│   │   ├── memory_interface_timing.svg # Memory handshake timing waveform diagram (Member 3)
+│   │   ├── memory_interface_timing.mmd # Mermaid sequence diagram for memory handshake (Member 3)
 │   │   ├── address_decomposition.svg   # 16-bit address slicing illustration
 │   │   ├── fsm_state_transition.svg    # 6-State FSM transition state diagram
 │   │   ├── hit_miss_flowchart.svg      # Detailed operational flowchart
@@ -276,10 +281,24 @@ All 20 test assertions passed with a **100% pass rate** and zero errors:
 
 ## 🎥 Demonstration Video & Presentation Deck
 
-- **Video Script:** See [`video/video_script.md`](file:///Users/palaparthiharshakarthikeya/Desktop/MCA/MCA/video/video_script.md) for the exact 5-minute timed script, pre-flight recording checklist, and recording directions.
+- **Video Script:** See [`video/video_script.md`](file:///Users/akk7/MCA/video/video_script.md) for the exact 5-minute timed script, pre-flight recording checklist, and recording directions.
 - **Demonstration Video Link:** `[Final Recorded Prototype Video Link: PENDING USER RECORDING - INSERT LINK HERE]`
-- **Presentation Slide Deck:** See [`presentation/slides.md`](file:///Users/palaparthiharshakarthikeya/Desktop/MCA/MCA/presentation/slides.md) for the 10-slide project overview.
-- **Technical Viva / Interview Prep:** See [`docs/interview_preparation_30_qa.md`](file:///Users/palaparthiharshakarthikeya/Desktop/MCA/MCA/docs/interview_preparation_30_qa.md) for 30 rigorous questions & model answers.
+- **Presentation Slide Deck:** See [`presentation/slides.md`](file:///Users/akk7/MCA/presentation/slides.md) for the 10-slide project overview.
+- **Member 3 Technical Dossier:** See [`docs/member3_contribution.md`](file:///Users/akk7/MCA/docs/member3_contribution.md) for full memory interface specs, integration details, and interview preparation.
+- **Technical Viva / Interview Prep:** See [`docs/interview_preparation_30_qa.md`](file:///Users/akk7/MCA/docs/interview_preparation_30_qa.md) for 30 rigorous questions & model answers.
+
+---
+
+## 📋 Phase I Evaluation & Submission Checklist (Weightage: 30%)
+
+- **Submission Form:** [Phase I Google Submission Form](https://docs.google.com/forms/d/e/1FAIpQLSc6Cx8OrOQLGj_X2ZMkyG5jc8mokq36mGRq2x8jGRNV1sbegA/viewform)
+- **Deadline:** November 16, 2026, 11:59 PM (GMT+5:30)
+
+| Requirement | Evaluation Criteria | Repository Artifact / Evidence | Status |
+|---|---|---|---|
+| **1. IEEE Project Report (10 Marks)** | Abstract, Literature Review, Proposed Solution, Individual Contributions, References | [`docs/IEEE_Report/IEEE_report.pdf`](file:///Users/akk7/MCA/docs/IEEE_Report/IEEE_report.pdf) & [`main.tex`](file:///Users/akk7/MCA/docs/IEEE_Report/main.tex) | ✅ Complete |
+| **2. Prototype Video (15 Marks)** | $\le 5$ mins, project idea, introduce all members, demonstrate RTL & simulation | Script: [`video/video_script.md`](file:///Users/akk7/MCA/video/video_script.md) \| Slides: [`presentation/slides.md`](file:///Users/akk7/MCA/presentation/slides.md) | ✅ Script Ready for Recording |
+| **3. GitHub Repository (5 Marks)** | Project report, prototype files, commit history reflecting individual contributions | Verilog RTL (`rtl/`), Testbench (`testbench/`), Memory suite (`scripts/`), Git commit logs | ✅ 100% Prepared & Tested |
 
 ---
 
