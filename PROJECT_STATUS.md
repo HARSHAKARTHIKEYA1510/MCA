@@ -15,7 +15,7 @@
 > The college project guidelines mention a default group size of **five (5)** members. However, our registered group strictly comprises **three (3)** members:
 > - **Member 1 (`[Student 1 Name / Roll No]`):** Lead Cache Architecture & RTL Design
 > - **Member 2 (`[Student 2 Name / Roll No]`):** Hardware Verification, Testbench & Simulation
-> - **Member 3 (Akshay Yelakanti):** Memory Subsystem Integration, Documentation & IEEE Report
+> - **Member 3 (Akshay Y):** Memory Subsystem Integration, Documentation & IEEE Report
 >
 > We have **not** fabricated or invented two non-existent team members or artificial contributions. This document explicitly flags this discrepancy for academic and faculty review.
 
