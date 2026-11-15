@@ -64,22 +64,25 @@ def create_pdf(filename):
     text(p1, 65, 750, "F2", 15, "Design and Implementation of a Synthesizable 16-Bit")
     text(p1, 95, 732, "F2", 15, "Direct-Mapped Cache Controller Using Verilog HDL")
     
-    text(p1, 60, 705, "F2", 9, "Member 1: [Student 1 Name / Roll No]")
-    text(p1, 60, 694, "F1", 8, "Lead RTL & Architecture")
-    text(p1, 60, 683, "F3", 8, "student1@college.edu")
+    text(p1, 50, 712, "F2", 8.5, "P. Harsha Karthikeya (2401010313)")
+    text(p1, 50, 701, "F1", 7.5, "Lead RTL & Architecture")
+    text(p1, 50, 690, "F1", 7, "Newton School of Technology, Rishihood Univ.")
+    text(p1, 50, 680, "F3", 7, "palaparthi.harshakarthikeya2024@nst.rishihood.edu.in")
 
-    text(p1, 235, 705, "F2", 9, "Member 2: [Student 2 Name / Roll No]")
-    text(p1, 235, 694, "F1", 8, "Verification & Simulation")
-    text(p1, 235, 683, "F3", 8, "student2@college.edu")
+    text(p1, 225, 712, "F2", 8.5, "D. Hemamdhar nath (2401010137)")
+    text(p1, 225, 701, "F1", 7.5, "Verification & Simulation")
+    text(p1, 225, 690, "F1", 7, "Newton School of Technology, Rishihood Univ.")
+    text(p1, 225, 680, "F3", 7, "dakarapu.nath2024@nst.rishihood.edu.in")
 
-    text(p1, 410, 705, "F2", 9, "Member 3: Akshay Yelakanti")
-    text(p1, 410, 694, "F1", 8, "Integration & Documentation")
-    text(p1, 410, 683, "F3", 8, "yakshay1213@gmail.com")
+    text(p1, 400, 712, "F2", 8.5, "Akshay Y (2401020008)")
+    text(p1, 400, 701, "F1", 7.5, "Integration & Documentation")
+    text(p1, 400, 690, "F1", 7, "Newton School of Technology, Rishihood Univ.")
+    text(p1, 400, 680, "F3", 7, "akshay.y2024@nst.rishihood.edu.in")
 
     line(p1, 50, 672, 562, 672, 0.75)
 
     # Note on group discrepancy
-    text(p1, 50, 660, "F3", 7.5, "* Academic Notice: Department guidelines describe a 5-member template; registered team strictly consists of 3 members.")
+    text(p1, 50, 660, "F3", 7.5, "* Academic Notice: Group Alpha was registered on 10/16/2026. Registered team strictly consists of 3 members.")
 
     # Two column coordinates: Left col x=50, w=245; Right col x=315, w=245.
     # Abstract in Column 1
@@ -173,16 +176,13 @@ def create_pdf(filename):
 
     # Section VI: Contributions
     text(p1, 315, 305, "F2", 9.5, "VI. INDIVIDUAL TEAM CONTRIBUTIONS")
-    text(p1, 315, 292, "F1", 8, "The project was executed by three registered members:")
-    text(p1, 315, 279, "F2", 8, "- Member 1 [Student 1]:")
-    text(p1, 415, 279, "F1", 8, "Lead RTL architecture, design of cache_memory,")
-    text(p1, 315, 268, "F1", 8, "  cache_controller, top-level integration, and 32-bit archive.")
-    text(p1, 315, 256, "F2", 8, "- Member 2 [Student 2]:")
-    text(p1, 415, 256, "F1", 8, "Verification lead, comprehensive testbench (tb),")
-    text(p1, 315, 245, "F1", 8, "  cycle-accurate verification engine, and VCD generation.")
-    text(p1, 315, 233, "F2", 8, "- Member 3 [Akshay Y.]:")
-    text(p1, 415, 233, "F1", 8, "Main memory model, top-level integration,")
-    text(p1, 315, 222, "F1", 8, "  IEEE report, timing diagrams, and viva defense guide.")
+    text(p1, 315, 292, "F1", 8, "Group Alpha executed the project across three registered members:")
+    text(p1, 315, 279, "F2", 8, "- Member 1 [P. Harsha K. (2401010313)]:")
+    text(p1, 315, 268, "F1", 8, "  Lead RTL architecture, cache_memory, and cache_controller.")
+    text(p1, 315, 256, "F2", 8, "- Member 2 [D. Hemamdhar N. (2401010137)]:")
+    text(p1, 315, 245, "F1", 8, "  Verification testbench (tb), simulation engine, & VCD dump.")
+    text(p1, 315, 233, "F2", 8, "- Member 3 [Akshay Y. (2401020008)]:")
+    text(p1, 315, 222, "F1", 8, "  Main memory model, top-level integration, IEEE report, & viva.")
 
     # Section VII: Results teaser
     text(p1, 315, 203, "F2", 9.5, "VII. EXPERIMENTAL VERIFICATION")

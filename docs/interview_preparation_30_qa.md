@@ -279,9 +279,9 @@ The primary limitation is **Conflict Miss Thrashing**. If an algorithm repeatedl
 
 ---
 
-#### Q30: How did your team divide work across the three members?
+#### Q30: How did Group Alpha divide work across the three members?
 **Model Answer:**  
-- **Member 1 (`[Student 1 Name]`):** Lead Architecture & RTL Design --- Defined address slicing, authored synthesizable Verilog modules (`cache_memory.v`, `cache_controller.v`, `direct_mapped_cache.v`), and preserved preliminary 32-bit assets.
-- **Member 2 (`[Student 2 Name]`):** Hardware Verification & Simulation --- Built the self-checking testbench (`cache_tb.v`), created the cycle-accurate verification engine (`simulate_cache.py`), executed 20 assertion checks, and generated VCD waveforms.
-- **Member 3 (`[Student 3 Name]`):** Integration & Documentation --- Modeled secondary memory (`main_memory.v`), authored the IEEE Phase I conference report, created block diagrams, developed the 5-minute video presentation script, and assembled this 30-question viva preparation guide.  
-*(Faculty note: The team strictly consists of these 3 members, and all work is authentic and verifiable).*
+- **Member 1: Palaparthi Harsha Karthikeya (2401010313):** Lead Architecture & RTL Design --- Defined address slicing, authored synthesizable Verilog modules (`cache_memory.v`, `cache_controller.v`), and preserved preliminary 32-bit assets.
+- **Member 2: Dakarapu Hemamdhar nath (2401010137):** Hardware Verification & Simulation --- Built the self-checking testbench (`cache_tb.v`), created the cycle-accurate verification engine (`simulate_cache.py`), executed 20 assertion checks, and generated VCD waveforms.
+- **Member 3: Akshay Y (2401020008):** Integration & Documentation --- Modeled secondary memory (`main_memory.v`), engineered top-level integration (`direct_mapped_cache.v`), authored the IEEE Phase I conference report, created block diagrams, developed the 5-minute video presentation script, and assembled this 30-question viva preparation guide.  
+*(Faculty note: Group Alpha at Newton School of Technology, Rishihood University was formally registered on 10/16/2026 with strictly these 3 members, and all work is authentic and verifiable).*

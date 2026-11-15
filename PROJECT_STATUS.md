@@ -12,10 +12,10 @@
 
 > [!IMPORTANT]
 > **Faculty Clarification Flag:**
-> The college project guidelines mention a default group size of **five (5)** members. However, our registered group strictly comprises **three (3)** members:
-> - **Member 1 (`[Student 1 Name / Roll No]`):** Lead Cache Architecture & RTL Design
-> - **Member 2 (`[Student 2 Name / Roll No]`):** Hardware Verification, Testbench & Simulation
-> - **Member 3 (Akshay Y):** Memory Subsystem Integration, Documentation & IEEE Report
+> While college project guidelines mention a default group size of **five (5)** members, **Group Alpha** (Newton School of Technology, Rishihood University) was formally registered on 10/16/2026 18:56:58 with strictly **three (3)** members:
+> - **Member 1 (Palaparthi Harsha Karthikeya - `2401010313`):** Lead Cache Architecture & RTL Design (`palaparthi.harshakarthikeya2024@nst.rishihood.edu.in`)
+> - **Member 2 (Dakarapu Hemamdhar nath - `2401010137`):** Hardware Verification, Testbench & Simulation (`dakarapu.nath2024@nst.rishihood.edu.in`)
+> - **Member 3 (Akshay Y - `2401020008`):** Memory Subsystem Integration, Documentation & IEEE Report (`akshay.y2024@nst.rishihood.edu.in`)
 >
 > We have **not** fabricated or invented two non-existent team members or artificial contributions. This document explicitly flags this discrepancy for academic and faculty review.
 

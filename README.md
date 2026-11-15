@@ -15,19 +15,21 @@
 - **Hardware Description Language:** Verilog-2001 (IEEE Std 1364-2001)
 - **Target Platform:** Synthesizable FPGA / ASIC / Icarus Verilog Simulator
 - **Submission Deadline:** November 16, 2026, 11:59 PM IST
+- **Group Name:** **Group Alpha** (Registered: 10/16/2026 18:56:58)
+- **Institution:** Newton School of Technology, Rishihood University
 - **Team Size:** 3 Members (Formally registered group)
 
 > [!IMPORTANT]
 > **Faculty Clarification Regarding Team Size:**
-> While departmental guidelines describe a standard five-member group size, this project was formally undertaken and executed by an authorized **three-member** team. We have explicitly avoided inventing artificial contributors. All deliverables represent genuine engineering contributions from the three registered members detailed below.
+> While departmental guidelines describe a standard five-member group size, **Group Alpha** was formally registered on 10/16/2026 with strictly **three (3)** members: Palaparthi Harsha Karthikeya (`2401010313`), Dakarapu Hemamdhar nath (`2401010137`), and Akshay Y (`2401020008`). We have avoided fabricating artificial contributors. All deliverables represent genuine engineering contributions from these three registered members.
 
 ### 👥 Team Responsibilities & Division of Contributions
 
-| Member | Primary Responsibility | Key Deliverables |
-|---|---|---|
-| **Member 1** (`[Student 1 Name / Roll No]`) | **Lead RTL Architecture & Cache Design** | Synthesizable RTL (`cache_memory.v`, `cache_controller.v`), address decomposition, 32-bit preliminary archive |
-| **Member 2** (`[Student 2 Name / Roll No]`) | **Hardware Verification & Simulation** | Automated testbench (`cache_tb.v`), cycle-accurate verification engine (`simulate_cache.py`), waveform generation (`cache_sim.vcd`), simulation logs |
-| **Member 3** (Akshay Yelakanti) | **Memory Subsystem, Integration & Documentation** | Secondary memory model (`main_memory.v`), top-level structural integration (`direct_mapped_cache.v`), memory verification suite (`verify_memory_subsystem.py`), IEEE Conference Report (`main.tex`, `IEEE_report.pdf`), timing diagrams, 5-min demonstration video script, 30-Q interview preparation guide |
+| Member | Roll Number & Email | Primary Responsibility | Key Deliverables |
+|---|---|---|---|
+| **Member 1: Palaparthi Harsha Karthikeya** | `2401010313`<br>`palaparthi.harshakarthikeya2024@nst.rishihood.edu.in` | **Lead RTL Architecture & Cache Design** | Synthesizable RTL (`cache_memory.v`, `cache_controller.v`), address decomposition, 32-bit preliminary archive |
+| **Member 2: Dakarapu Hemamdhar nath** | `2401010137`<br>`dakarapu.nath2024@nst.rishihood.edu.in` | **Hardware Verification & Simulation** | Automated testbench (`cache_tb.v`), cycle-accurate verification engine (`simulate_cache.py`), waveform generation (`cache_sim.vcd`), simulation logs |
+| **Member 3: Akshay Y** | `2401020008`<br>`akshay.y2024@nst.rishihood.edu.in` | **Memory Subsystem, Integration & Documentation** | Secondary memory model (`main_memory.v`), top-level structural integration (`direct_mapped_cache.v`), memory verification suite (`verify_memory_subsystem.py`), IEEE Conference Report (`main.tex`, `IEEE_report.pdf`), timing diagrams, 5-min demonstration video script, 30-Q interview preparation guide |
 
 ---
 

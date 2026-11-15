@@ -39,7 +39,7 @@
 
 *Copy and paste this text under **"Individual Contributions - Member 1"** in the report:*
 
-> **Member 1: Cache Architecture & Verilog RTL Design**
+> **Member 1: Palaparthi Harsha Karthikeya (Roll No: 2401010313) --- Cache Architecture & Verilog RTL Design**
 > - Formulated the architectural specifications of the Direct-Mapped Cache (4 KB capacity, 16-byte cache line, 20-bit tag, 8-bit index, 2-bit word offset).
 > - Designed and implemented the complete synthesizable Verilog HDL codebase:
 >   - `cache_defines.vh`: Defined address slicing parameters, timing macros, and FSM state encodings.
@@ -55,7 +55,7 @@
 When recording your prototype video, here is how you (Member 1) should present your portion:
 
 1. **Self Introduction (15-20 seconds):**
-   > *"Hello everyone, I am [Your Name], Member 1 of the team. My primary responsibility in this project is the Cache Architecture design and Verilog RTL implementation."*
+   > *"Hello everyone, I am Palaparthi Harsha Karthikeya, Member 1 of Group Alpha. My primary responsibility in this project is the Cache Architecture design and Verilog RTL implementation."*
 
 2. **Architecture Explanation (60-90 seconds):**
    > *"For our project, we designed a 4 Kilobyte Direct-Mapped Cache Controller for 32-bit processors. Our 32-bit address is split into: a 20-bit Tag, an 8-bit Index addressing 256 lines, and a 4-bit offset where bits [3:2] select the 32-bit word within a 16-byte cache line.*  

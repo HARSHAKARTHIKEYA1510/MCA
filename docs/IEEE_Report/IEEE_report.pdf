@@ -23,21 +23,24 @@ endobj
    /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> >>
 endobj
 8 0 obj
-<< /Length 8058 >>
+<< /Length 8187 >>
 stream
 BT /F2 15 Tf 65 750 Td (Design and Implementation of a Synthesizable 16-Bit) Tj ET
 BT /F2 15 Tf 95 732 Td (Direct-Mapped Cache Controller Using Verilog HDL) Tj ET
-BT /F2 9 Tf 60 705 Td (Member 1: [Student 1 Name / Roll No]) Tj ET
-BT /F1 8 Tf 60 694 Td (Lead RTL & Architecture) Tj ET
-BT /F3 8 Tf 60 683 Td (student1@college.edu) Tj ET
-BT /F2 9 Tf 235 705 Td (Member 2: [Student 2 Name / Roll No]) Tj ET
-BT /F1 8 Tf 235 694 Td (Verification & Simulation) Tj ET
-BT /F3 8 Tf 235 683 Td (student2@college.edu) Tj ET
-BT /F2 9 Tf 410 705 Td (Member 3: Akshay Yelakanti) Tj ET
-BT /F1 8 Tf 410 694 Td (Integration & Documentation) Tj ET
-BT /F3 8 Tf 410 683 Td (yakshay1213@gmail.com) Tj ET
+BT /F2 8.5 Tf 50 712 Td (P. Harsha Karthikeya \(2401010313\)) Tj ET
+BT /F1 7.5 Tf 50 701 Td (Lead RTL & Architecture) Tj ET
+BT /F1 7 Tf 50 690 Td (Newton School of Technology, Rishihood Univ.) Tj ET
+BT /F3 7 Tf 50 680 Td (palaparthi.harshakarthikeya2024@nst.rishihood.edu.in) Tj ET
+BT /F2 8.5 Tf 225 712 Td (D. Hemamdhar nath \(2401010137\)) Tj ET
+BT /F1 7.5 Tf 225 701 Td (Verification & Simulation) Tj ET
+BT /F1 7 Tf 225 690 Td (Newton School of Technology, Rishihood Univ.) Tj ET
+BT /F3 7 Tf 225 680 Td (dakarapu.nath2024@nst.rishihood.edu.in) Tj ET
+BT /F2 8.5 Tf 400 712 Td (Akshay Y \(2401020008\)) Tj ET
+BT /F1 7.5 Tf 400 701 Td (Integration & Documentation) Tj ET
+BT /F1 7 Tf 400 690 Td (Newton School of Technology, Rishihood Univ.) Tj ET
+BT /F3 7 Tf 400 680 Td (akshay.y2024@nst.rishihood.edu.in) Tj ET
 0.75 w 50 672 m 562 672 l S
-BT /F3 7.5 Tf 50 660 Td (* Academic Notice: Department guidelines describe a 5-member template; registered team strictly consists of 3 members.) Tj ET
+BT /F3 7.5 Tf 50 660 Td (* Academic Notice: Group Alpha was registered on 10/16/2026. Registered team strictly consists of 3 members.) Tj ET
 BT /F2 9 Tf 50 642 Td (Abstract-) Tj ET
 BT /F1 8 Tf 95 642 Td (The memory wall between processor cycle frequencies and) Tj ET
 BT /F1 8 Tf 50 631 Td (DRAM latency represents a fundamental computing bottleneck. Cache) Tj ET
@@ -112,16 +115,13 @@ BT /F1 8 Tf 440 336 Td (Commits write to memory.) Tj ET
 BT /F2 8 Tf 315 324 Td (6\) S_COMPLETE \(3'b101\):) Tj ET
 BT /F1 8 Tf 420 324 Td (Pulses cpu_ready=1 and returns to IDLE.) Tj ET
 BT /F2 9.5 Tf 315 305 Td (VI. INDIVIDUAL TEAM CONTRIBUTIONS) Tj ET
-BT /F1 8 Tf 315 292 Td (The project was executed by three registered members:) Tj ET
-BT /F2 8 Tf 315 279 Td (- Member 1 [Student 1]:) Tj ET
-BT /F1 8 Tf 415 279 Td (Lead RTL architecture, design of cache_memory,) Tj ET
-BT /F1 8 Tf 315 268 Td (  cache_controller, top-level integration, and 32-bit archive.) Tj ET
-BT /F2 8 Tf 315 256 Td (- Member 2 [Student 2]:) Tj ET
-BT /F1 8 Tf 415 256 Td (Verification lead, comprehensive testbench \(tb\),) Tj ET
-BT /F1 8 Tf 315 245 Td (  cycle-accurate verification engine, and VCD generation.) Tj ET
-BT /F2 8 Tf 315 233 Td (- Member 3 [Akshay Y.]:) Tj ET
-BT /F1 8 Tf 415 233 Td (Main memory model, top-level integration,) Tj ET
-BT /F1 8 Tf 315 222 Td (  IEEE report, timing diagrams, and viva defense guide.) Tj ET
+BT /F1 8 Tf 315 292 Td (Group Alpha executed the project across three registered members:) Tj ET
+BT /F2 8 Tf 315 279 Td (- Member 1 [P. Harsha K. \(2401010313\)]:) Tj ET
+BT /F1 8 Tf 315 268 Td (  Lead RTL architecture, cache_memory, and cache_controller.) Tj ET
+BT /F2 8 Tf 315 256 Td (- Member 2 [D. Hemamdhar N. \(2401010137\)]:) Tj ET
+BT /F1 8 Tf 315 245 Td (  Verification testbench \(tb\), simulation engine, & VCD dump.) Tj ET
+BT /F2 8 Tf 315 233 Td (- Member 3 [Akshay Y. \(2401020008\)]:) Tj ET
+BT /F1 8 Tf 315 222 Td (  Main memory model, top-level integration, IEEE report, & viva.) Tj ET
 BT /F2 9.5 Tf 315 203 Td (VII. EXPERIMENTAL VERIFICATION) Tj ET
 BT /F1 8 Tf 315 190 Td (All 20 test assertions achieved 100% pass status under cycle-) Tj ET
 BT /F1 8 Tf 315 179 Td (accurate evaluation. Detailed results are detailed on Page 2.) Tj ET
@@ -337,10 +337,10 @@ xref
 0000000350 00000 n 
 0000000418 00000 n 
 0000000577 00000 n 
-0000008687 00000 n 
-0000008847 00000 n 
+0000008816 00000 n 
+0000008976 00000 n 
 trailer
 << /Size 11 /Root 1 0 R >>
 startxref
-20221
+20350
 %%EOF

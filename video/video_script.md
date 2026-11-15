@@ -37,25 +37,25 @@
 ## 🎙️ Verbatim Narration Script
 
 ### Phase 1: Introduction (0:00 – 0:30)
-**[Visual: Title Slide showing Project Name, GitHub Repository, and 3 Member Names]**
+**[Visual: Title Slide showing Project Name, Group Alpha, Newton School of Technology, Rishihood University, GitHub Repository, and Member Details]**
 
-- **Member 1 (`[Student 1 Name]`):**  
-  *"Hello respected faculty and evaluators. Welcome to our Phase I project demonstration on the **Design and Implementation of a Synthesizable Direct-Mapped Cache Controller Using Verilog HDL**.  
-  I am `[Student 1 Name]`, leading Cache Architecture and RTL design."*
+- **Member 1 (Palaparthi Harsha Karthikeya - 2401010313):**  
+  *"Hello respected faculty and evaluators. Welcome to Group Alpha's Phase I project demonstration on the **Design and Implementation of a Synthesizable Direct-Mapped Cache Controller Using Verilog HDL**.  
+  I am Palaparthi Harsha Karthikeya, leading Cache Architecture and RTL design."*
 
-- **Member 2 (`[Student 2 Name]`):**  
-  *"I am `[Student 2 Name]`, responsible for Hardware Verification, Testbench Development, and Simulation Analysis."*
+- **Member 2 (Dakarapu Hemamdhar nath - 2401010137):**  
+  *"I am Dakarapu Hemamdhar nath, responsible for Hardware Verification, Testbench Development, and Simulation Analysis."*
 
-- **Member 3 (Akshay Yelakanti):**  
-  *"And I am Akshay Yelakanti, handling Main Memory Subsystem Integration, Bus Handshake Protocols, and Academic Reporting.  
-  Please note: while departmental guidelines mention a 5-member template, our registered project group strictly comprises the three of us."*
+- **Member 3 (Akshay Y - 2401020008):**  
+  *"And I am Akshay Y, handling Main Memory Subsystem Integration, Bus Handshake Protocols, and Academic Reporting.  
+  Please note: while departmental guidelines mention a 5-member template, Group Alpha was formally registered on October 16 with strictly the three of us."*
 
 ---
 
 ### Phase 2: Cache Theory & Direct-Mapping Principles (0:30 – 1:15)
 **[Visual: Switch to Diagram of Memory Hierarchy and Processor-Memory Wall]**
 
-- **Member 1 (`[Student 1 Name]`):**  
+- **Member 1 (Palaparthi Harsha Karthikeya):**  
   *"In modern computing systems, CPU execution speed far outpaces DRAM access latency, creating the notorious 'memory wall'. To prevent constant processor stalling, we insert a small, ultra-fast cache memory.  
   For our design, we selected a **Direct-Mapped Cache**. In a direct-mapped architecture, each physical memory block maps to exactly one predetermined line in the cache. This eliminates the need for expensive multi-way comparators and LRU replacement circuitry, delivering the lowest silicon area and single-cycle access speeds."*
 
@@ -64,7 +64,7 @@
 ### Phase 3: Architecture & Address Decomposition (1:15 – 2:00)
 **[Visual: Display `docs/Block_Diagrams/address_decomposition.svg`]**
 
-- **Member 1 (`[Student 1 Name]`):**  
+- **Member 1 (Palaparthi Harsha Karthikeya):**  
   *"Let's examine our 16-bit address decomposition. Every 16-bit memory address is partitioned into three fields:*
   - *Bits [1:0] (2 bits): **Byte Offset**, selecting 1 of 4 bytes within the cache line.*
   - *Bits [3:2] (2 bits): **Line Index**, directly addressing one of our 4 physical cache lines.*
@@ -72,15 +72,15 @@
   
   *Our cache has 4 lines of 4 bytes each, totaling 16 bytes.  
   Crucially, we implemented a **Write-Through** policy with **Write-Allocate**. On every write, both cache and main memory are updated simultaneously, keeping memory 100% coherent and eliminating the complexity of dirty bits.  
-  Now, Member 2 will demonstrate our Verilog RTL and simulation."*
+  Now, Dakarapu Hemamdhar nath will demonstrate our Verilog RTL and simulation."*
 
 ---
 
 ### Phase 4: Verilog RTL & Live Simulation (2:00 – 3:30)
 **[Visual: VS Code showing `rtl/` directory, then Terminal window executing simulation]**
 
-- **Member 2 (`[Student 2 Name]`):**  
-  *"Thank you, `[Student 1 Name]`. Our synthesizable Verilog implementation consists of four modular entities:*
+- **Member 2 (Dakarapu Hemamdhar nath):**  
+  *"Thank you, Harsha. Our synthesizable Verilog implementation consists of four modular entities:*
   1. *`cache_memory.v`: Stores 4 lines of 4 bytes, 12-bit tags, and valid flags.*
   2. *`cache_controller.v`: Houses our 6-state FSM: IDLE, LOOKUP, READ_MISS, ALLOCATE, WRITE_THROUGH, and COMPLETE.*
   3. *`direct_mapped_cache.v`: Integrates the controller and memory array.*
@@ -96,7 +96,7 @@ python3 scripts/simulate_cache.py
 
 **[Visual: Terminal scrolls showing 20 automated assertions passing with `[PASS]` tags]**
 
-- **Member 2 (`[Student 2 Name]`):**  
+- **Member 2 (Dakarapu Hemamdhar nath):**  
   *"As you can see on the screen, our testbench executed 20 automated assertions across 12 distinct verification scenarios. All 20 tests PASSED with a 100% success rate!"*
 
 ---
@@ -104,7 +104,7 @@ python3 scripts/simulate_cache.py
 ### Phase 5: Hit/Miss Analysis & Waveform Evidence (3:30 – 4:30)
 **[Visual: Show GTKWave or waveform viewer displaying `simulation/waveforms/cache_sim.vcd`]**
 
-- **Member 2 (`[Student 2 Name]`):**  
+- **Member 2 (Dakarapu Hemamdhar nath):**  
   *"Let's highlight the most critical test cases:*
   1. * **Initial Cold Miss on `0x0034`:** The cache starts empty (`valid = 0`). The controller stalls, fetches the 4-byte block (`0xA0` to `0xA3`) from memory, stores it in Line 1, and returns `0xA0` with `cpu_hit = 0`.*
   2. * **Spatial Locality Hit on `0x0035`:** Accessing the next consecutive byte immediately produces `cpu_hit = 1` in single-cycle turnaround because the block was already brought into Line 1.*

@@ -1,7 +1,10 @@
 # Member 3 Technical Dossier: Memory Subsystem, System Integration & Documentation
 
 **Role:** Member 3 — Memory Subsystem, System Integration & Academic Documentation  
-**Team Member:** Akshay Yelakanti (`yakshay1213@gmail.com`)  
+**Team Member:** Akshay Y (Roll No: `2401020008`)  
+**Email:** `akshay.y2024@nst.rishihood.edu.in` / `yakshay1213@gmail.com`  
+**Group:** Group Alpha (Registered: 10/16/2026 18:56:58)  
+**Institution:** Newton School of Technology, Rishihood University  
 **Project:** Synthesizable 16-Bit Direct-Mapped Cache Controller Using Verilog HDL  
 **Course:** Microprocessors and Computer Architecture (MCA)  
 **Academic Submission Deadline:** November 16, 2026, 11:59 PM (GMT+5:30)  
@@ -193,7 +196,7 @@ $ python3 scripts/verify_memory_subsystem.py
 ### 5.2 Section: Individual Contributions (Member 3)
 *Insert under Section VI (Individual Contributions):*
 
-> **Member 3: Akshay Yelakanti --- Memory Interface Subsystem, Integration & Documentation:**  
+> **Member 3: Akshay Y (Roll No: 2401020008) --- Memory Interface Subsystem, Integration & Documentation:**  
 > - Designed, modeled, and verified the 64~KB secondary memory architecture (`main_memory.v`), implementing the 4-byte block burst read engine, single-byte write-through interface, boundary alignment masking, and parameterized 2-cycle latency modeling.
 > - Engineered the top-level structural integration (`direct_mapped_cache.v`), interconnecting the cache controller, SRAM array, and main memory with robust request-acknowledge handshaking and unified reset trees.
 > - Authored the comprehensive IEEE Phase~I technical report (`main.tex`, `references.bib`, `IEEE_report.pdf`), generated publication-quality architectural schematics (`memory_interface_timing.svg`, `system_architecture.svg`), built the standalone memory subsystem verification suite (`scripts/verify_memory_subsystem.py`), and formulated the 5-minute video demonstration script.
@@ -206,9 +209,9 @@ $ python3 scripts/verify_memory_subsystem.py
 **Member 3 Allocation:** Minutes 3:30 to 5:00 (approx. 90 seconds).  
 **Visuals on Screen:** Display `docs/Block_Diagrams/memory_interface_timing.svg` followed by `docs/Block_Diagrams/system_architecture.svg`.
 
-### Word-for-Word Script for Member 3 (Akshay Yelakanti):
+### Word-for-Word Script for Member 3 (Akshay Y):
 
-> *"Thank you, Member 2. Hello faculty, I am **Akshay Yelakanti**, Member 3 of the team. My core focus in this project is the **Main Memory Subsystem design, Bus Handshaking Interface, and Top-Level System Integration**.*  
+> *"Thank you, Hemamdhar. Hello faculty, I am **Akshay Y** (Roll No: 2401020008), Member 3 of Group Alpha. My core focus in this project is the **Main Memory Subsystem design, Bus Handshaking Interface, and Top-Level System Integration**.*  
 >
 > *(Point to `memory_interface_timing.svg` on screen)*  
 > *"In real computer systems, off-chip DRAM is significantly slower than on-chip cache. To accurately model this behavior, I developed `main_memory.v` with a parameterized 2-cycle access latency.*  

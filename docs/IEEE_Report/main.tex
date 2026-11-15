@@ -17,27 +17,30 @@
 \title{Design and Implementation of a Synthesizable 16-Bit Direct-Mapped Cache Controller Using Verilog HDL}
 
 \author{
-    \IEEEauthorblockN{Member 1: [Student 1 Name / Roll No - Lead RTL \& Architecture]}
-    \IEEEauthorblockA{\textit{Department of Computer Applications / VLSI Design} \\
-    \textit{Institution Name Placeholder}\\
-    Email: [student1@college.edu]}
+    \IEEEauthorblockN{Palaparthi Harsha Karthikeya}
+    \IEEEauthorblockA{\textit{Roll No: 2401010313} \\
+    \textit{Newton School of Technology} \\
+    Rishihood University \\
+    palaparthi.harshakarthikeya2024@nst.rishihood.edu.in}
     \and
-    \IEEEauthorblockN{Member 2: [Student 2 Name / Roll No - Verification \& Simulation]}
-    \IEEEauthorblockA{\textit{Department of Computer Applications / VLSI Design} \\
-    \textit{Institution Name Placeholder}\\
-    Email: [student2@college.edu]}
+    \IEEEauthorblockN{Dakarapu Hemamdhar nath}
+    \IEEEauthorblockA{\textit{Roll No: 2401010137} \\
+    \textit{Newton School of Technology} \\
+    Rishihood University \\
+    dakarapu.nath2024@nst.rishihood.edu.in}
     \and
-    \IEEEauthorblockN{Member 3: Akshay Yelakanti}
-    \IEEEauthorblockA{\textit{Department of Computer Applications / VLSI Design} \\
-    \textit{Institution Name Placeholder}\\
-    Email: yakshay1213@gmail.com}
+    \IEEEauthorblockN{Akshay Y}
+    \IEEEauthorblockA{\textit{Roll No: 2401020008} \\
+    \textit{Newton School of Technology} \\
+    Rishihood University \\
+    akshay.y2024@nst.rishihood.edu.in}
 }
 
 \maketitle
 
 % Faculty Clarification Footnote / Note
 \begingroup\renewcommand\thefootnote{\textdagger}
-\footnotetext{Academic Notice: While standard departmental templates suggest a five-member group size, this project was formally undertaken and completed by an authorized three-member team. Individual contributions for all three active members are explicitly detailed in Section VII.}
+\footnotetext{Academic Notice: Group Alpha was registered on 10/16/2026. While standard departmental templates suggest a five-member group size, our registered group strictly comprises three members: Palaparthi Harsha Karthikeya (2401010313), Dakarapu Hemamdhar nath (2401010137), and Akshay Y (2401020008). Individual contributions are explicitly detailed in Section VI.}
 \endgroup
 
 \begin{abstract}
@@ -152,14 +155,14 @@ The cache controller transitions across six deterministic states:
 \end{enumerate}
 
 \section{Individual Contributions}
-The project was executed by a collaborative team of three members, with responsibilities delineated as follows:
+Group Alpha executed this project with responsibilities delineated as follows:
 
 \begin{itemize}
-    \item \textbf{Member 1: [Student 1 Name / Roll No] --- Lead RTL \& Architecture:}
+    \item \textbf{Member 1: Palaparthi Harsha Karthikeya (Roll No: 2401010313) --- Lead RTL \& Architecture:}
     Formulated the architectural parameters (16-bit address slicing, 4 lines $\times$ 4 bytes). Designed and implemented synthesizable Verilog modules: \texttt{cache\_memory.v}, \texttt{cache\_controller.v}, and top-level \texttt{direct\_mapped\_cache.v}. Safeguarded legacy 32-bit architectural exploratory assets for Phase~II continuation.
-    \item \textbf{Member 2: [Student 2 Name / Roll No] --- Hardware Verification \& Simulation:}
+    \item \textbf{Member 2: Dakarapu Hemamdhar nath (Roll No: 2401010137) --- Hardware Verification \& Simulation:}
     Engineered the self-checking automated verification testbench (\texttt{testbench/cache\_tb.v}) covering all twelve functional scenarios. Implemented the cycle-accurate verification engine and VCD waveform generator (\texttt{scripts/simulate\_cache.py}), achieving 100\% assertion coverage.
-    \item \textbf{Member 3: Akshay Yelakanti --- Memory Subsystem, System Integration \& Documentation:}
+    \item \textbf{Member 3: Akshay Y (Roll No: 2401020008) --- Memory Subsystem, System Integration \& Documentation:}
     Designed, modeled, and verified the 64~KB secondary memory subsystem (\texttt{main\_memory.v}) with 4-byte burst read packaging, boundary alignment masking, single-byte write-through synchronization, and parameterized 2-cycle latency. Engineered the top-level structural integration (\texttt{direct\_mapped\_cache.v}), unified reset trees, and bus request-acknowledge handshaking. Authored the comprehensive IEEE Phase~I technical report, architectural timing diagrams (\texttt{memory\_interface\_timing.svg}), standalone memory verification suite (\texttt{verify\_memory\_subsystem.py}), 5-minute video demonstration script, and Phase~II technical defense guide.
 \end{itemize}
 

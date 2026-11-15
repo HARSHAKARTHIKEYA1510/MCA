@@ -2,20 +2,23 @@
 
 **Project Domain:** Computer Architecture and Digital Logic Design  
 **Academic Level:** College Phase I Project Evaluation  
-**Team Members:** Member 1, Member 2, Member 3  
+**Group:** Group Alpha (Newton School of Technology, Rishihood University)  
+**Team Members:** Palaparthi Harsha Karthikeya, Dakarapu Hemamdhar nath, Akshay Y  
 
 ---
 
 ## Slide 1: Title & Team Introduction
 ### Design and Implementation of a Direct-Mapped Cache Controller Using Verilog HDL
-- **Course / Project:** Computer Architecture & Digital System Design
+- **Course / Project:** Microprocessors & Computer Architecture (MCA)
+- **Institution:** Newton School of Technology, Rishihood University
+- **Group Name:** Group Alpha (Registered: 10/16/2026 18:56:58)
 - **Target Architecture:** 16-Bit Byte-Addressable Architecture
 - **Implementation Standard:** Verilog-2001 (IEEE 1364-2001)
 - **Team Composition (3 Members):**
-  - **Member 1 (`[Student 1 Name]`):** Lead Architecture & Verilog RTL Design
-  - **Member 2 (`[Student 2 Name]`):** Hardware Verification & Simulation Suite
-  - **Member 3 (`[Student 3 Name]`):** Memory Subsystem, Documentation & IEEE Report
-- *Administrative Note:* Explicitly flagged 3 registered members vs 5-member template for faculty review.
+  - **Member 1 (Palaparthi Harsha Karthikeya - `2401010313`):** Lead Architecture & Verilog RTL Design
+  - **Member 2 (Dakarapu Hemamdhar nath - `2401010137`):** Hardware Verification & Simulation Suite
+  - **Member 3 (Akshay Y - `2401020008`):** Memory Subsystem, System Integration & IEEE Report
+- *Administrative Note:* Formally registered 3-member team (Group Alpha) flagged for faculty review.
 
 ---
 
