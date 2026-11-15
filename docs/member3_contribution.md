@@ -271,3 +271,4 @@ This ensures that the CPU byte-select multiplexer can index bytes directly using
 1. `mem_wdata` will expand from 8 bits to 32 bits (or 128 bits) to support full-block write-back evictions when replacing a dirty line.
 2. An additional memory transaction `S_WRITE_BACK` will be introduced prior to `S_ALLOCATE` to flush the evicted dirty block to main memory.
 3. A write buffer can be added to decouple CPU write stalls from main memory bus latency.
+
