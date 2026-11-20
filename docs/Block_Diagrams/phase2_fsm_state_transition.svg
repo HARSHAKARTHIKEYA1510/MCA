@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" width="100%" height="100%">
+  <defs>
+    <linearGradient id="idleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#475569" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="compGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    <linearGradient id="wbGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e11d48" />
+      <stop offset="100%" stop-color="#be123c" />
+    </linearGradient>
+    <linearGradient id="allocGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+    <linearGradient id="updGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    <filter id="fsmShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="3" dy="4" stdDeviation="3" flood-opacity="0.25" />
+    </filter>
+    <marker id="arrowHead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#334155" />
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#059669" />
+    </marker>
+    <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#e11d48" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="920" height="540" fill="#f8fafc" rx="12" />
+
+  <!-- Title -->
+  <text x="460" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="bold" fill="#0f172a" text-anchor="middle">
+    Phase II: Enhanced 5-State Cache Controller FSM State Machine
+  </text>
+  <text x="460" y="60" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">
+    Single-Cycle Hit Turnaround | Dirty Block Eviction Path | Sub-word Write Allocation
+  </text>
+
+  <!-- State 0: S_IDLE -->
+  <g transform="translate(60, 200)" filter="url(#fsmShadow)">
+    <rect width="160" height="90" rx="10" fill="url(#idleGrad)" />
+    <text x="80" y="38" font-family="sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">S_IDLE</text>
+    <text x="80" y="58" font-family="monospace" font-size="12" fill="#94a3b8" text-anchor="middle">3'b000</text>
+    <text x="80" y="75" font-family="sans-serif" font-size="10" fill="#cbd5e1" text-anchor="middle">Latch CPU Request</text>
+  </g>
+
+  <!-- State 1: S_COMPARE_TAG -->
+  <g transform="translate(320, 200)" filter="url(#fsmShadow)">
+    <rect width="180" height="90" rx="10" fill="url(#compGrad)" />
+    <text x="90" y="35" font-family="sans-serif" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">S_COMPARE_TAG</text>
+    <text x="90" y="55" font-family="monospace" font-size="12" fill="#93c5fd" text-anchor="middle">3'b001</text>
+    <text x="90" y="75" font-family="sans-serif" font-size="10" fill="#e0e7ff" text-anchor="middle">Tag Check &amp; Hit/Miss</text>
+  </g>
+
+  <!-- State 2: S_WRITE_BACK -->
+  <g transform="translate(320, 390)" filter="url(#fsmShadow)">
+    <rect width="180" height="85" rx="10" fill="url(#wbGrad)" />
+    <text x="90" y="32" font-family="sans-serif" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">S_WRITE_BACK</text>
+    <text x="90" y="52" font-family="monospace" font-size="12" fill="#fecdd3" text-anchor="middle">3'b010</text>
+    <text x="90" y="70" font-family="sans-serif" font-size="10" fill="#ffe4e6" text-anchor="middle">Evict Dirty Block to Mem</text>
+  </g>
+
+  <!-- State 3: S_ALLOCATE -->
+  <g transform="translate(620, 390)" filter="url(#fsmShadow)">
+    <rect width="180" height="85" rx="10" fill="url(#allocGrad)" />
+    <text x="90" y="32" font-family="sans-serif" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">S_ALLOCATE</text>
+    <text x="90" y="52" font-family="monospace" font-size="12" fill="#fde68a" text-anchor="middle">3'b011</text>
+    <text x="90" y="70" font-family="sans-serif" font-size="10" fill="#fef3c7" text-anchor="middle">Fetch 4-Byte Line from Mem</text>
+  </g>
+
+  <!-- State 4: S_UPDATE -->
+  <g transform="translate(620, 200)" filter="url(#fsmShadow)">
+    <rect width="180" height="90" rx="10" fill="url(#updGrad)" />
+    <text x="90" y="35" font-family="sans-serif" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">S_UPDATE</text>
+    <text x="90" y="55" font-family="monospace" font-size="12" fill="#a7f3d0" text-anchor="middle">3'b100</text>
+    <text x="90" y="75" font-family="sans-serif" font-size="10" fill="#d1fae5" text-anchor="middle">Commit Line &amp; ACK CPU</text>
+  </g>
+
+  <!-- TRANSITIONS -->
+  <!-- IDLE -> COMPARE_TAG -->
+  <path d="M 220 245 L 310 245" stroke="#334155" stroke-width="2.5" marker-end="url(#arrowHead)" />
+  <text x="265" y="235" font-family="sans-serif" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">cpu_req = 1</text>
+
+  <!-- Fast-Path HIT Return: COMPARE_TAG -> IDLE (Curved top) -->
+  <path d="M 380 200 C 350 120, 200 120, 150 200" fill="none" stroke="#059669" stroke-width="3" stroke-dasharray="6,4" marker-end="url(#arrowGreen)" />
+  <rect x="200" y="105" width="160" height="28" rx="5" fill="#dcfce7" stroke="#16a34a" />
+  <text x="280" y="123" font-family="sans-serif" font-size="10" font-weight="bold" fill="#15803d" text-anchor="middle">
+    Read Hit / WB Write Hit (1 Cycle!)
+  </text>
+
+  <!-- COMPARE_TAG -> WRITE_BACK (Miss & Dirty) -->
+  <path d="M 410 290 L 410 380" stroke="#e11d48" stroke-width="2.5" marker-end="url(#arrowRed)" />
+  <text x="480" y="340" font-family="sans-serif" font-size="10" font-weight="bold" fill="#be123c">
+    Miss &amp; Valid &amp; Dirty
+  </text>
+
+  <!-- COMPARE_TAG -> ALLOCATE (Miss & Clean) -->
+  <path d="M 490 280 L 630 385" stroke="#d97706" stroke-width="2.5" marker-end="url(#arrowHead)" />
+  <text x="590" y="325" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b45309">
+    Miss &amp; Clean Line
+  </text>
+
+  <!-- WRITE_BACK -> ALLOCATE (mem_ready) -->
+  <path d="M 500 435 L 610 435" stroke="#334155" stroke-width="2.5" marker-end="url(#arrowHead)" />
+  <text x="555" y="425" font-family="sans-serif" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">mem_ready = 1</text>
+
+  <!-- ALLOCATE -> UPDATE (mem_ready) -->
+  <path d="M 710 390 L 710 300" stroke="#334155" stroke-width="2.5" marker-end="url(#arrowHead)" />
+  <text x="775" y="348" font-family="sans-serif" font-size="10" font-weight="bold" fill="#0f172a">mem_ready = 1</text>
+
+  <!-- UPDATE -> IDLE (Curved bottom) -->
+  <path d="M 640 290 C 560 360, 240 360, 180 290" fill="none" stroke="#334155" stroke-width="2.5" marker-end="url(#arrowHead)" />
+  <rect x="360" y="330" width="140" height="24" rx="4" fill="#f1f5f9" stroke="#94a3b8" />
+  <text x="430" y="346" font-family="sans-serif" font-size="10" font-weight="bold" fill="#334155" text-anchor="middle">
+    cpu_ready = 1 (Done)
+  </text>
+
+  <!-- Legend -->
+  <g transform="translate(60, 485)">
+    <rect width="800" height="35" rx="6" fill="#f1f5f9" stroke="#cbd5e1" />
+    <circle cx="30" cy="17" r="6" fill="#059669" />
+    <text x="45" y="21" font-family="sans-serif" font-size="11" fill="#334155">Single-Cycle Hit Exit Path</text>
+
+    <circle cx="230" cy="17" r="6" fill="#e11d48" />
+    <text x="245" y="21" font-family="sans-serif" font-size="11" fill="#334155">Dirty Block Write-Back Flush</text>
+
+    <circle cx="460" cy="17" r="6" fill="#d97706" />
+    <text x="475" y="21" font-family="sans-serif" font-size="11" fill="#334155">Clean Allocation Path</text>
+
+    <circle cx="650" cy="17" r="6" fill="#334155" />
+    <text x="665" y="21" font-family="sans-serif" font-size="11" fill="#334155">Standard State Transitions</text>
+  </g>
+</svg>
+
